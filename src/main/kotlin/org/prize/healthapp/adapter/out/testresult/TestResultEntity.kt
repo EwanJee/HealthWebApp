@@ -8,13 +8,16 @@ import jakarta.persistence.Id
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.encodeToJsonElement
+import org.prize.healthapp.adapter.out.common.BaseEntity
+import org.prize.healthapp.domain.testresult.TestResult
 
 @Entity
-class Test(
+class TestResultEntity(
     age: Int,
     sex: String,
     data: JsonObject,
-) {
+) : BaseEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long? = null
@@ -29,4 +32,15 @@ class Test(
     @Column(columnDefinition = "json")
     var data = Json.encodeToString(data)
         protected set
+
+    companion object {
+        fun from(test: TestResult): TestResultEntity {
+            val dataJsonObject = Json.encodeToJsonElement(test.data) as JsonObject
+            return TestResultEntity(
+                test.age,
+                test.sex,
+                dataJsonObject,
+            )
+        }
+    }
 }
