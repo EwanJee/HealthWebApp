@@ -1,6 +1,7 @@
 package org.prize.healthapp.adapter.out.s3
 
 import com.amazonaws.services.s3.AmazonS3
+import com.amazonaws.services.s3.model.AmazonS3Exception
 import com.amazonaws.services.s3.model.S3Object
 import org.apache.commons.csv.CSVFormat
 import org.prize.healthapp.application.port.out.S3Query
@@ -20,7 +21,15 @@ class S3Adapter(
 
     override fun getCSV(fileName: String): List<Map<String, String>> {
         val s3Object: S3Object =
-            s3Client.getObject(bucketName, fileName) ?: throw BusinessException(ErrorCode.FILE_NOT_FOUND)
+            try {
+                s3Client.getObject(bucketName, fileName)
+            } catch (e: AmazonS3Exception) {
+                if (e.errorCode == "NoSuchKey") {
+                    throw BusinessException(ErrorCode.FILE_NOT_FOUND)
+                } else {
+                    throw e // 다른 S3 관련 예외는 그대로 전달
+                }
+            }
         val csvData = mutableListOf<Map<String, String>>()
         s3Object.objectContent.use { inputStream ->
             BufferedReader(InputStreamReader(inputStream)).use { reader ->
