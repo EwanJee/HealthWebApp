@@ -5,6 +5,11 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: myuser
+    password: secret
+    url: jdbc:mysql://mysql:3306/mydatabase?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
 
 
 springdoc:
