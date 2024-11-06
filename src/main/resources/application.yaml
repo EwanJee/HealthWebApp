@@ -23,6 +23,10 @@ spring:
           batch_size: 800
         order_updates: true
         order_inserts: true
+  data:
+    redis:
+      port: 6379
+      host: localhost
 
 springdoc:
   swagger-ui:
