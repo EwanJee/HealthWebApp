@@ -1,3 +1,9 @@
+version: '3.8'
+
+networks:
+  my_network:
+    driver: bridge
+
 services:
   mysql:
     image: 'mysql:latest'
@@ -7,8 +13,13 @@ services:
       - 'MYSQL_ROOT_PASSWORD=verysecret'
       - 'MYSQL_USER=myuser'
     ports:
-      - '3306'
+      - '3306:3306'
+    networks:
+      - my_network
+
   redis:
     image: 'redis:latest'
     ports:
-      - '6379'
+      - '6379:6379'
+    networks:
+      - my_network
