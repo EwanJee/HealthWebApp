@@ -1,17 +1,16 @@
 package org.prize.healthapp.adapter.out.testresult
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.encodeToJsonElement
 import org.prize.healthapp.adapter.out.common.BaseEntity
+import org.prize.healthapp.domain.testresult.MeasurementData
 import org.prize.healthapp.domain.testresult.TestResult
+import java.util.UUID
 
+@Table(name = "test_result")
 @Entity
 class TestResultEntity(
     age: Int,
@@ -19,9 +18,8 @@ class TestResultEntity(
     data: JsonObject,
 ) : BaseEntity() {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    var id: Long? = null
-        protected set
+    @Column(name = "id", columnDefinition = "VARCHAR(36)")
+    var id: UUID? = null
 
     var age = age
         protected set
@@ -32,6 +30,15 @@ class TestResultEntity(
     @Column(columnDefinition = "json")
     var data = Json.encodeToString(data)
         protected set
+
+    fun toTestResult(): TestResult {
+        val measurementData = Json.decodeFromString<MeasurementData>(data)
+        return TestResult(
+            age = age,
+            sex = sex,
+            data = measurementData,
+        )
+    }
 
     companion object {
         fun from(test: TestResult): TestResultEntity {

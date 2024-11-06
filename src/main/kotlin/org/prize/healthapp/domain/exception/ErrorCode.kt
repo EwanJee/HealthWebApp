@@ -12,4 +12,7 @@ enum class ErrorCode(
 
     // Wrong File Format
     WRONG_FILE_FORMAT(HttpStatus.BAD_REQUEST, "F002", "잘못된 파일 형식입니다."),
+
+    // TOO MANY REQUEST
+    TOO_MANY_REQUEST(HttpStatus.TOO_MANY_REQUESTS, "F003", "요청이 너무 많습니다."),
 }

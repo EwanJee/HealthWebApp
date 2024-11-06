@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.RestController
 class PersonController(
     private val personCommand: PersonCommand,
 ) {
-    @Operation(summary = "Person 리스트 생성", description = "csv 파일 url로부터 Person을 생성합니다.")
+    @Operation(summary = "체력 측정 현황 데이터 정리하기 결과값은 데이터 삽입 횟수", description = "csv 파일 url로부터 Person을 생성합니다.")
     @PostMapping("")
     fun createPersons(
         @RequestBody fileInfoDto: FileInfoDto,
-    ): ResponseEntity<List<PersonDistributionDto>> {
+    ): ResponseEntity<Int> {
         val result = personCommand.createPersons(fileInfoDto)
         return ResponseEntity.ok().body(result)
     }

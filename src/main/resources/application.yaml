@@ -7,10 +7,22 @@ spring:
       max-request-size: 10MB
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: myuser
-    password: secret
-    url: jdbc:mysql://mysql:3306/mydatabase?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: verysecret
+    url: jdbc:mysql://localhost:3306/mydatabase?rewriteBatchedStatements=true&createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&logger=Slf4JLogger&maxQuerySizeToLog=999999&characterEncoding=UTF-8
 
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    open-in-view: false
+
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 800
+        order_updates: true
+        order_inserts: true
 
 springdoc:
   swagger-ui:

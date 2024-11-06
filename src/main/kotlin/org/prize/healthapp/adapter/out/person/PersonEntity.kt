@@ -1,13 +1,11 @@
+@file:Suppress("ktlint:standard:no-wildcard-imports")
+
 package org.prize.healthapp.adapter.out.person
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.Table
+import jakarta.persistence.*
 import org.prize.healthapp.adapter.out.common.BaseEntity
 import org.prize.healthapp.domain.person.Person
+import java.util.UUID
 
 @Table(name = "person")
 @Entity
@@ -16,9 +14,8 @@ class PersonEntity(
     age: Int,
 ) : BaseEntity() {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    var id: Long? = null
-        protected set
+    @Column(name = "id", columnDefinition = "VARCHAR(36)")
+    var id: UUID? = null
 
     @Column(nullable = false)
     var location = location

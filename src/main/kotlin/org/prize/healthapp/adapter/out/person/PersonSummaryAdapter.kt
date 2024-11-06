@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional(readOnly = false)
 @Adapter
 class PersonSummaryAdapter(
-    val personSummaryRepository: PersonSummaryRepository,
+    private val personSummaryRepository: PersonSummaryRepository,
 ) : PersonSummaryQuery {
     @Transactional
     override fun distribute(persons: List<PersonDistributionDto>) {

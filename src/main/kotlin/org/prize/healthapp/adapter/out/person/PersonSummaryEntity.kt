@@ -21,7 +21,7 @@ class PersonSummaryEntity(
     age90s: Int,
 ) {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
         protected set
 
