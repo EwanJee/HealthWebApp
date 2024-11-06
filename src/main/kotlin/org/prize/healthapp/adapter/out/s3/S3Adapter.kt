@@ -30,6 +30,10 @@ class S3Adapter(
                     throw e // 다른 S3 관련 예외는 그대로 전달
                 }
             }
+        return convertToMap(s3Object)
+    }
+
+    private fun convertToMap(s3Object: S3Object): List<Map<String, String>> {
         val csvData = mutableListOf<Map<String, String>>()
         s3Object.objectContent.use { inputStream ->
             BufferedReader(InputStreamReader(inputStream)).use { reader ->
