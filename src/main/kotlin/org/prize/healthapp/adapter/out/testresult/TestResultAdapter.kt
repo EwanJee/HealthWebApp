@@ -2,7 +2,7 @@
 
 package org.prize.healthapp.adapter.out.testresult
 
-import org.prize.healthapp.application.port.out.TestQuery
+import org.prize.healthapp.application.port.out.TestResultQuery
 import org.prize.healthapp.domain.exception.BusinessException
 import org.prize.healthapp.domain.exception.ErrorCode
 import org.prize.healthapp.domain.testresult.TestResult
@@ -17,7 +17,7 @@ class TestResultAdapter(
     private val testResultRepository: TestResultRepository,
     private val jdbcTemplate: JdbcTemplate,
     private val logger: Logger,
-) : TestQuery {
+) : TestResultQuery {
     @Transactional
     override fun save(tests: List<TestResult>) {
         val testEntities: List<TestResultEntity> =
@@ -37,4 +37,12 @@ class TestResultAdapter(
     }
 
     override fun findAll(): List<TestResult> = testResultRepository.findAll().map { it.toTestResult() }
+
+    override fun findByAgeAndSex(
+        age: Int,
+        sex: String,
+    ): List<TestResult> =
+        testResultRepository.findByAgeAndSex(age, sex).map {
+            it.toTestResult()
+        }
 }

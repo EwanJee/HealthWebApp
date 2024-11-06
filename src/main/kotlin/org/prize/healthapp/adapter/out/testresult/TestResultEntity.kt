@@ -1,3 +1,5 @@
+@file:Suppress("ktlint:standard:no-wildcard-imports")
+
 package org.prize.healthapp.adapter.out.testresult
 
 import jakarta.persistence.*

@@ -7,6 +7,7 @@ import org.prize.healthapp.application.port.`in`.FileCommand
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.multipart.MultipartFile
 
@@ -17,14 +18,18 @@ class FileController(
     private val fileCommand: FileCommand,
 ) {
     @PostMapping("/persons")
-    fun uploadPersons(multiPartFile: MultipartFile): ResponseEntity<String> {
-        fileCommand.uploadPersons(multiPartFile)
-        return ResponseEntity.ok().body("File uploaded successfully")
+    fun uploadPersons(
+        @RequestParam("file") multiPartFile: MultipartFile,
+    ): ResponseEntity<Int> {
+        val result = fileCommand.uploadPersons(multiPartFile)
+        return ResponseEntity.ok().body(result)
     }
 
     @PostMapping("/tests")
-    fun uploadTests(multiPartFile: MultipartFile): ResponseEntity<String> {
-        fileCommand.uploadTests(multiPartFile)
-        return ResponseEntity.ok().body("File uploaded successfully")
+    fun uploadTests(
+        @RequestParam("file") multiPartFile: MultipartFile,
+    ): ResponseEntity<Int> {
+        val result = fileCommand.uploadTests(multiPartFile)
+        return ResponseEntity.ok().body(result)
     }
 }

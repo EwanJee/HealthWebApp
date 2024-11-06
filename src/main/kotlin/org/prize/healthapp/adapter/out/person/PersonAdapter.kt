@@ -20,6 +20,7 @@ class PersonAdapter(
 ) : PersonQuery {
     @Transactional
     override fun save(persons: List<Person>) {
+        logger.info("start person bulk save")
         val personEntities = persons.map { PersonEntity.from(it) }
         val query = """INSERT INTO person (id, location, age) VALUES (UUID(), ?, ?)"""
         try {

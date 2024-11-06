@@ -29,7 +29,7 @@ class TestResult(
                         .map { column ->
                             async(dispatcher) {
                                 TestResult.of(
-                                    column["MESURE_AGE_CO"]?.toIntOrNull() ?: 0,
+                                    getAgeGroup(column["MESURE_AGE_CO"]?.toInt()) ?: 0,
                                     column["SEXDSTN_FLAG_CD"] ?: "",
                                     MeasurementData.from(column),
                                 )
@@ -38,5 +38,19 @@ class TestResult(
             }
             return tests ?: throw BusinessException(ErrorCode.WRONG_FILE_FORMAT)
         }
+
+        private fun getAgeGroup(age: Int?): Int? =
+            when (age) {
+                in 10..19 -> 10
+                in 20..29 -> 20
+                in 30..39 -> 30
+                in 40..49 -> 40
+                in 50..59 -> 50
+                in 60..69 -> 60
+                in 70..79 -> 70
+                in 80..89 -> 80
+                in 90..99 -> 90
+                else -> null
+            }
     }
 }

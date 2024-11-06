@@ -9,6 +9,7 @@ import org.prize.healthapp.domain.exception.BusinessException
 import org.prize.healthapp.domain.exception.ErrorCode
 import org.prize.healthapp.infrastructure.annotations.Adapter
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.web.multipart.MultipartFile
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
@@ -31,6 +32,10 @@ class S3Adapter(
                 }
             }
         return convertToMap(s3Object)
+    }
+
+    override fun upload(multiPartFile: MultipartFile) {
+        TODO("Not yet implemented")
     }
 
     private fun convertToMap(s3Object: S3Object): List<Map<String, String>> {
