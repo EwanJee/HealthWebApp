@@ -7,18 +7,18 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: verysecret
-    url: jdbc:mysql://localhost:3306/mydatabase?rewriteBatchedStatements=true&createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&logger=Slf4JLogger&maxQuerySizeToLog=999999&characterEncoding=UTF-8
+    password: ${DB_PASSWORD}
+    url: jdbc:mysql://localhost:3306/mydatabase?rewriteBatchedStatements=true&createDatabaseIfNotExist=true&useSSL=false&logger=Slf4JLogger&maxQuerySizeToLog=999999&characterEncoding=UTF-8
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
     open-in-view: false
 
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+        dialect: org.hibernate.dialect.MySQLDialect
         jdbc:
           batch_size: 800
         order_updates: true
