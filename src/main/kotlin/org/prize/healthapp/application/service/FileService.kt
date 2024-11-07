@@ -1,6 +1,7 @@
 package org.prize.healthapp.application.service
 
 import org.apache.commons.csv.CSVFormat
+import org.prize.healthapp.adapter.out.s3.FileUploadResponseDto
 import org.prize.healthapp.application.port.`in`.FileCommand
 import org.prize.healthapp.application.port.out.PersonQuery
 import org.prize.healthapp.application.port.out.PersonSummaryQuery
@@ -24,28 +25,28 @@ class FileService(
     private val testResultQuery: TestResultQuery,
     private val s3Query: S3Query,
 ) : FileCommand {
-    override fun uploadPersons(multiPartFile: MultipartFile): Int {
+    override fun uploadPersons(multiPartFile: MultipartFile): FileUploadResponseDto {
         if (!checkIfFileIsCSV(multiPartFile)) {
             throw BusinessException(ErrorCode.WRONG_FILE_FORMAT)
         }
         val csvData = convertToMap(multiPartFile)
         val persons: List<Person> = Person.from(csvData)
         personQuery.save(persons)
-        s3Query.upload(multiPartFile)
+        val responseDto = s3Query.upload(multiPartFile)
         val personDistributionDto = Person.convert(persons)
         personSummaryQuery.distribute(personDistributionDto)
-        return persons.size
+        return responseDto
     }
 
-    override fun uploadTests(multiPartFile: MultipartFile): Int {
+    override fun uploadTests(multiPartFile: MultipartFile): FileUploadResponseDto {
         if (!checkIfFileIsCSV(multiPartFile)) {
             throw BusinessException(ErrorCode.WRONG_FILE_FORMAT)
         }
         val csvData = convertToMap(multiPartFile)
         val tests = TestResult.from(csvData)
-        s3Query.upload(multiPartFile)
+        val responseDto = s3Query.upload(multiPartFile)
         testResultQuery.save(tests)
-        return tests.size
+        return responseDto
     }
 
     private fun checkIfFileIsCSV(file: MultipartFile): Boolean = file.contentType.equals("text/csv")

@@ -1,8 +1,7 @@
 package org.prize.healthapp.adapter.out.s3
 
 import com.amazonaws.services.s3.AmazonS3
-import com.amazonaws.services.s3.model.AmazonS3Exception
-import com.amazonaws.services.s3.model.S3Object
+import com.amazonaws.services.s3.model.*
 import org.apache.commons.csv.CSVFormat
 import org.prize.healthapp.application.port.out.S3Query
 import org.prize.healthapp.domain.exception.BusinessException
@@ -12,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.web.multipart.MultipartFile
 import java.io.BufferedReader
 import java.io.InputStreamReader
+import java.util.UUID
 
 @Adapter
 class S3Adapter(
@@ -34,8 +34,33 @@ class S3Adapter(
         return convertToMap(s3Object)
     }
 
-    override fun upload(multiPartFile: MultipartFile) {
-        TODO("Not yet implemented")
+    override fun upload(multiPartFile: MultipartFile): FileUploadResponseDto {
+        if (multiPartFile.isEmpty) throw BusinessException(ErrorCode.FILE_NOT_FOUND)
+        multiPartFile.originalFilename ?: throw BusinessException(ErrorCode.WRONG_FILE_NAME)
+        if (!multiPartFile.originalFilename!!.endsWith(".csv")) throw BusinessException(ErrorCode.WRONG_FILE_FORMAT)
+        checkIfFileHasValidFormat(multiPartFile)
+        val fileName = createFileName(multiPartFile.originalFilename!!)
+        val objectMetadata = ObjectMetadata()
+        objectMetadata.contentType = multiPartFile.contentType
+        s3Client.putObject(
+            PutObjectRequest(bucketName, fileName, multiPartFile.inputStream, objectMetadata)
+                .withCannedAcl(CannedAccessControlList.PublicRead),
+        )
+        return FileUploadResponseDto(s3Client.getUrl(bucketName, fileName).toString(), fileName)
+    }
+
+    private fun checkIfFileHasValidFormat(file: MultipartFile) {
+        file.inputStream.use { inputStream ->
+            BufferedReader(InputStreamReader(inputStream)).use { reader ->
+                val csvParser =
+                    CSVFormat.DEFAULT
+                        .withFirstRecordAsHeader()
+                        .parse(reader)
+                if (csvParser.headerNames.isEmpty()) {
+                    throw BusinessException(ErrorCode.WRONG_FILE_FORMAT)
+                }
+            }
+        }
     }
 
     private fun convertToMap(s3Object: S3Object): List<Map<String, String>> {
@@ -53,5 +78,12 @@ class S3Adapter(
             }
         }
         return csvData
+    }
+
+    private fun createFileName(fileName: String): String {
+        val fileNameWithoutExtension = fileName.substringBeforeLast(".")
+        val extension = fileName.substringAfterLast(".")
+        val code = UUID.randomUUID().toString()
+        return "$fileNameWithoutExtension-$code.$extension"
     }
 }
