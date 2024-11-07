@@ -1,6 +1,8 @@
 package org.prize.healthapp.domain.testresult
 
 import kotlinx.serialization.Serializable
+import org.prize.healthapp.domain.exception.BusinessException
+import org.prize.healthapp.domain.exception.ErrorCode
 
 @Serializable
 data class MeasurementData(
@@ -21,23 +23,28 @@ data class MeasurementData(
     val fiveMx4ShuttleRunSeconds: Double = 0.0,
 ) {
     companion object {
+        private fun getDoubleValue(
+            column: Map<String, String>,
+            key: String,
+        ): Double = column[key]?.toDoubleOrNull() ?: throw BusinessException(ErrorCode.MISSING_COLUMN)
+
         fun from(column: Map<String, String>): MeasurementData =
             MeasurementData(
-                height = column["MESURE_IEM_001_VALUE"]?.toDoubleOrNull() ?: 0.0,
-                weight = column["MESURE_IEM_002_VALUE"]?.toDoubleOrNull() ?: 0.0,
-                bodyFatPercentage = column["MESURE_IEM_003_VALUE"]?.toDoubleOrNull() ?: 0.0,
-                sitUpCount = column["MESURE_IEM_010_VALUE"]?.toDoubleOrNull() ?: 0.0,
-                bmiKgPerM2 = column["MESURE_IEM_018_VALUE"]?.toDoubleOrNull() ?: 0.0,
-                crossedSitUpCount = column["MESURE_IEM_019_VALUE"]?.toDoubleOrNull() ?: 0.0,
-                shuttleRunCount = column["MESURE_IEM_020_VALUE"]?.toDoubleOrNull() ?: 0.0,
-                tenMx4ShuttleRunSeconds = column["MESURE_IEM_021_VALUE"]?.toDoubleOrNull() ?: 0.0,
-                standingLongJumpCm = column["STANDING_LONG_JUMP_CM"]?.toDoubleOrNull() ?: 0.0,
-                sitToStandCount = column["MESURE_IEM_022_VALUE"]?.toDoubleOrNull() ?: 0.0,
-                twoMinuteSteppingInPlaceCount = column["MESURE_IEM_025_VALUE"]?.toDoubleOrNull() ?: 0.0,
-                treadmill9MinutesBpm = column["MESURE_IEM_034_VALUE"]?.toDoubleOrNull() ?: 0.0,
-                thighCircumferenceLeftCm = column["MESURE_IEM_038_VALUE"]?.toDoubleOrNull() ?: 0.0,
-                thighCircumferenceRightCm = column["MESURE_IEM_039_VALUE"]?.toDoubleOrNull() ?: 0.0,
-                fiveMx4ShuttleRunSeconds = column["MESURE_IEM_050_VALUE"]?.toDoubleOrNull() ?: 0.0,
+                height = getDoubleValue(column, "MESURE_IEM_001_VALUE"),
+                weight = getDoubleValue(column, "MESURE_IEM_002_VALUE"),
+                bodyFatPercentage = getDoubleValue(column, "MESURE_IEM_003_VALUE"),
+                sitUpCount = getDoubleValue(column, "MESURE_IEM_010_VALUE"),
+                bmiKgPerM2 = getDoubleValue(column, "MESURE_IEM_018_VALUE"),
+                crossedSitUpCount = getDoubleValue(column, "MESURE_IEM_019_VALUE"),
+                shuttleRunCount = getDoubleValue(column, "MESURE_IEM_020_VALUE"),
+                tenMx4ShuttleRunSeconds = getDoubleValue(column, "MESURE_IEM_021_VALUE"),
+                standingLongJumpCm = getDoubleValue(column, "MESURE_IEM_022_VALUE"),
+                sitToStandCount = getDoubleValue(column, "MESURE_IEM_023_VALUE"),
+                twoMinuteSteppingInPlaceCount = getDoubleValue(column, "MESURE_IEM_025_VALUE"),
+                treadmill9MinutesBpm = getDoubleValue(column, "MESURE_IEM_034_VALUE"),
+                thighCircumferenceLeftCm = getDoubleValue(column, "MESURE_IEM_038_VALUE"),
+                thighCircumferenceRightCm = getDoubleValue(column, "MESURE_IEM_039_VALUE"),
+                fiveMx4ShuttleRunSeconds = getDoubleValue(column, "MESURE_IEM_050_VALUE"),
             )
     }
 }

@@ -28,9 +28,19 @@ class Person(
                     csvData
                         .map { data ->
                             async(dispatcher) {
+                                // 필수 칼럼 체크
+                                val cnterNm =
+                                    data["CNTER_NM"] ?: throw BusinessException(
+                                        ErrorCode.MISSING_COLUMN,
+                                    )
+                                val mesureAgeCo =
+                                    data["MESURE_AGE_CO"]?.toIntOrNull() ?: throw BusinessException(
+                                        ErrorCode.MISSING_COLUMN,
+                                    )
+
                                 Person.of(
-                                    data["CNTER_NM"] ?: "",
-                                    data["MESURE_AGE_CO"]?.toIntOrNull() ?: 0,
+                                    cnterNm,
+                                    mesureAgeCo,
                                 )
                             }
                         }.awaitAll()

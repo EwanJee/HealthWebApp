@@ -28,9 +28,13 @@ class TestResult(
                     csvData
                         .map { column ->
                             async(dispatcher) {
+                                val age =
+                                    column["MESURE_AGE_CO"]?.toInt()
+                                        ?: throw BusinessException(ErrorCode.MISSING_COLUMN)
+                                val sex = column["SEXDSTN_FLAG_CD"] ?: throw BusinessException(ErrorCode.MISSING_COLUMN)
                                 TestResult.of(
-                                    getAgeGroup(column["MESURE_AGE_CO"]?.toInt()) ?: 0,
-                                    column["SEXDSTN_FLAG_CD"] ?: "",
+                                    getAgeGroup(age),
+                                    sex,
                                     MeasurementData.from(column),
                                 )
                             }
@@ -39,7 +43,7 @@ class TestResult(
             return tests ?: throw BusinessException(ErrorCode.WRONG_FILE_FORMAT)
         }
 
-        private fun getAgeGroup(age: Int?): Int? =
+        private fun getAgeGroup(age: Int): Int =
             when (age) {
                 in 10..19 -> 10
                 in 20..29 -> 20
@@ -50,7 +54,9 @@ class TestResult(
                 in 70..79 -> 70
                 in 80..89 -> 80
                 in 90..99 -> 90
-                else -> null
+                else -> {
+                    throw BusinessException(ErrorCode.WRONG_FILE_FORMAT)
+                }
             }
     }
 }
