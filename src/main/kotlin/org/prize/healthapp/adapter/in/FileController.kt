@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
 
 @Tag(name = "File 컨트롤러", description = "File 컨트롤러 API")
-@RequestMapping("/v1/file")
+@RequestMapping("api/v1/file")
 @RestController
 class FileController(
     private val fileCommand: FileCommand,
