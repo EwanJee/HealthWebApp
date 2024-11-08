@@ -28,6 +28,7 @@ repositories {
 }
 
 dependencies {
+    implementation("io.github.cdimascio:java-dotenv:5.2.2")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
     implementation("org.apache.commons:commons-csv:1.8")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json")
