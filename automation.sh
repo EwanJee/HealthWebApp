@@ -8,6 +8,3 @@ docker tag api ewanjeedocker/api:latest
 
 # Docker Hub로 이미지 푸시
 docker push ewanjeedocker/api:latest
-~
-~
-~
