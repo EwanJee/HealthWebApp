@@ -34,5 +34,5 @@ class PersonAdapter(
         }
     }
 
-    override fun findAll(): List<Person> = personRepository.findAll().map { it.toPerson() }
+    override fun findAll(): List<Person>? = personRepository.findAll().map { it.toPerson() }
 }

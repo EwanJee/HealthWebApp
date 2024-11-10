@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @Tag(name = "Person 컨트롤러", description = "Person 컨트롤러 API")
-@RequestMapping("api/v1/persons")
+@RequestMapping("/api/v1/persons")
 @RestController
 class PersonController(
     private val personCommand: PersonCommand,

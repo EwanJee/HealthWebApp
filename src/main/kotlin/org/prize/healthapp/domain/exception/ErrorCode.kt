@@ -21,4 +21,7 @@ enum class ErrorCode(
 
     // MISSING COLUMN
     MISSING_COLUMN(HttpStatus.BAD_REQUEST, "F005", "필수 칼럼이 누락되었습니다."),
+
+    // NOT_FOUND
+    NOT_FOUND(HttpStatus.NOT_FOUND, "F006", "데이터를 찾을 수 없습니다."),
 }

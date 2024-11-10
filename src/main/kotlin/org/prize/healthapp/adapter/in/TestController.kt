@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @Tag(name = "Test 컨트롤러", description = "Test 컨트롤러 API")
-@RequestMapping("api/v1/tests")
+@RequestMapping("/api/v1/tests")
 @RestController
 class TestController(
     private val testResultCommand: TestResultCommand,
