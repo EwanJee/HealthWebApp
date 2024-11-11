@@ -44,7 +44,7 @@ class TestResultService(
                 countPerAges[70] = countPerAges.getOrDefault(70, 0) + 1
             } else if (it.age in 80..89) {
                 countPerAges[80] = countPerAges.getOrDefault(80, 0) + 1
-            } else if (it.age in 90..99) {
+            } else if (it.age in 90..150) {
                 countPerAges[90] = countPerAges.getOrDefault(90, 0) + 1
             }
             val testResult: TestResultAvgDto = TestResultAvgDto.of(ageSexDto, it.data)
@@ -58,6 +58,7 @@ class TestResultService(
         }
         map.map {
             val (key, value) = it
+            println(key.ages)
             val count = countPerAges[key.ages]!!
             value.divide(count)
         }

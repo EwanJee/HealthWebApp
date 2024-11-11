@@ -61,8 +61,7 @@ class TestResult(
                 in 60..69 -> 60
                 in 70..79 -> 70
                 in 80..89 -> 80
-                in 90..99 -> 90
-                in 100..109 -> 100
+                in 90..150 -> 90
                 else -> {
                     throw BusinessException(ErrorCode.WRONG_FILE_FORMAT)
                 }
