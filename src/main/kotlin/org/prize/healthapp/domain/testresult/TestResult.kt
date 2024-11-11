@@ -20,7 +20,7 @@ class TestResult(
 
         @OptIn(ExperimentalCoroutinesApi::class)
         fun from(csvData: List<Map<String, String>>): List<TestResult> {
-            var tests: List<TestResult>?
+            var tests: List<TestResult>? = mutableListOf()
             runBlocking {
                 // 병렬 처리에 사용할 스레드 풀 생성 (CPU 코어 수 기반)
                 val dispatcher = Dispatchers.Default.limitedParallelism(4)
@@ -30,8 +30,16 @@ class TestResult(
                             async(dispatcher) {
                                 val age =
                                     column["MESURE_AGE_CO"]?.toInt()
-                                        ?: throw BusinessException(ErrorCode.MISSING_COLUMN)
-                                val sex = column["SEXDSTN_FLAG_CD"] ?: throw BusinessException(ErrorCode.MISSING_COLUMN)
+                                        ?: throw BusinessException(ErrorCode.MISSING_COLUMN, Throwable("MESURE_AGE_CO"))
+                                val sex =
+                                    column["SEXDSTN_FLAG_CD"]
+                                        ?: throw BusinessException(
+                                            ErrorCode.MISSING_COLUMN,
+                                            Throwable(
+                                                @Suppress("ktlint:standard:max-line-length")
+                                                "SEXDSTN_FLAG_CD",
+                                            ),
+                                        )
                                 TestResult.of(
                                     getAgeGroup(age),
                                     sex,
@@ -54,6 +62,7 @@ class TestResult(
                 in 70..79 -> 70
                 in 80..89 -> 80
                 in 90..99 -> 90
+                in 100..109 -> 100
                 else -> {
                     throw BusinessException(ErrorCode.WRONG_FILE_FORMAT)
                 }

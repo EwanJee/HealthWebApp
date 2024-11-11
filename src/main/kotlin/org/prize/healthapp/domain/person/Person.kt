@@ -32,10 +32,12 @@ class Person(
                                 val cnterNm =
                                     data["CNTER_NM"] ?: throw BusinessException(
                                         ErrorCode.MISSING_COLUMN,
+                                        Throwable("CNTER_NM"),
                                     )
                                 val mesureAgeCo =
                                     data["MESURE_AGE_CO"]?.toIntOrNull() ?: throw BusinessException(
                                         ErrorCode.MISSING_COLUMN,
+                                        Throwable("MESURE_AGE_CO"),
                                     )
 
                                 Person.of(
@@ -64,7 +66,7 @@ class Person(
                             age60s = persons.count { it.age in 60..69 },
                             age70s = persons.count { it.age in 70..79 },
                             age80s = persons.count { it.age in 80..89 },
-                            age90s = persons.count { it.age in 90..99 },
+                            age90s = persons.count { it.age in 90..150 },
                         )
                     }
             return personDistributionDto

@@ -18,7 +18,7 @@ class GlobalExceptionHandler {
             buildJsonObject {
                 put("status", businessException.errorCode.status.toString())
                 put("code", businessException.errorCode.code)
-                put("message", businessException.errorCode.message)
+                put("message", businessException.exception?.message ?: businessException.errorCode.message)
             }
         return ResponseEntity.status(businessException.errorCode.status).body(errorResponse)
     }

@@ -1,8 +1,6 @@
 package org.prize.healthapp.domain.testresult
 
 import kotlinx.serialization.Serializable
-import org.prize.healthapp.domain.exception.BusinessException
-import org.prize.healthapp.domain.exception.ErrorCode
 
 @Serializable
 data class MeasurementData(
@@ -26,7 +24,7 @@ data class MeasurementData(
         private fun getDoubleValue(
             column: Map<String, String>,
             key: String,
-        ): Double = column[key]?.toDoubleOrNull() ?: throw BusinessException(ErrorCode.MISSING_COLUMN)
+        ): Double = column[key]?.toDoubleOrNull() ?: 0.0
 
         fun from(column: Map<String, String>): MeasurementData =
             MeasurementData(
