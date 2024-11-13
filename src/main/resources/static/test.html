@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Health Check - 지예환</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .nav {
+            background-color: #007bff;
+            padding: 15px 0;
+            color: white;
+            text-align: center;
+        }
+        .nav .logo a {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .question-container {
+            padding: 20px;
+        }
+        .questions {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <nav class="nav">
+        <div class="logo">
+            <a href="#">My Health Check</a>
+        </div>
+    </nav>
+
+    <div class="question-container">
+        <div class="questions">
+            <h2 class="text-center">체력 측정 검사표</h2>
+            <form id="health-form">
+                <ol>
+                    <li>
+                        <div class="form-group">
+                            <label for="age">나이:</label>
+                            <input type="number" class="form-control" id="age" name="age" placeholder="나이를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="gender">성별:</label>
+                            <select class="form-control" id="gender" name="gender" required>
+                                <option value="">성별을 선택하세요</option>
+                                <option value="male">남성</option>
+                                <option value="female">여성</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="weight">몸무게 (kg):</label>
+                            <input type="number" class="form-control" id="weight" name="weight" placeholder="몸무게를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="height">키 (cm):</label>
+                            <input type="number" class="form-control" id="height" name="height" placeholder="키를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="bodyFatPercentage">체지방률:</label>
+                            <input type="number" class="form-control" id="bodyFatPercentage" name="bodyFatPercentage" placeholder="체지방률 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="bmi">BMI:</label>
+                            <input type="number" class="form-control" id="bmi" name="bmi" placeholder="bmi를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="situps">앉아 윗몸 말아 올리기 (회):</label>
+                            <input type="number" class="form-control" id="situps" name="situps" placeholder="횟수를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="cross-situps">교차 윗몸일으키기 (회):</label>
+                            <input type="number" class="form-control" id="cross-situps" name="crossSitups" placeholder="횟수를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="shuttle-run">왕복 오래 달리기 (회):</label>
+                            <input type="number" class="form-control" id="shuttle-run" name="shuttleRun" placeholder="횟수를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="10m-run">10m 4회 왕복 오래 달리기 (초):</label>
+                            <input type="number" class="form-control" id="10m-run" name="tenMeterRun" placeholder="시간을 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="jump">제자리 멀리 뛰기 (cm):</label>
+                            <input type="number" class="form-control" id="jump" name="jump" placeholder="거리(cm)를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="sit-stand">앉았다 일어서기 (회):</label>
+                            <input type="number" class="form-control" id="sit-stand" name="sitStand" placeholder="횟수를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="walking">2분간 제자리 걷기 (걸음):</label>
+                            <input type="number" class="form-control" id="walking" name="walking" placeholder="걸음 수를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="eight-walk">8자 보행 (초):</label>
+                            <input type="number" class="form-control" id="eight-walk" name="eightWalk" placeholder="시간을 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="treadmill">트레드밀 (9분, km):</label>
+                            <input type="number" class="form-control" id="treadmill" name="treadmill" placeholder="거리(km)를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="reaction">반응 시간 (ms):</label>
+                            <input type="number" class="form-control" id="reaction" name="reaction" placeholder="시간(ms)를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="grip">악력 (kg):</label>
+                            <input type="number" class="form-control" id="grip" name="grip" placeholder="힘(kg)를 입력하세요" required>
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="text-center">
+                    <button type="button" id="submit" class="btn btn-primary btn-lg">결과 보러가기</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#submit').click(function () {
+                const formData = {
+                    age: $('#age').val(),
+                    sex: $('#gender').val(),
+                    height: $('#height').val(),
+                    weight: $('#weight').val(),
+                    bodyFatPercentage: $('#bodyFatPercentage').val(),
+                    sitUpCount: $('#situps').val(),
+                    bmbmiKgPerM2: $('#bmi').val(),
+                    crossedSitUpCount: $('#cross-situps').val(),
+                    shuttleRunCount: $('#shuttle-run').val(),
+                    tenMx4ShuttleRunSeconds: $('#10m-run').val(),
+                    standingLongJumpCm: $('#jump').val(),
+                    sitToStandCount: $('#sit-stand').val(),
+                    twoMinuteSteppingInPlaceCount: $('#walking').val(),
+                    treadmill9MinutesBpm: $('#treadmill').val(),
+                    eightWalk: $('#eight-walk').val(),
+                    reaction: $('#reaction').val(),
+                    grip: $('#grip').val()
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/v1/tests/my',
+                    data: JSON.stringify(formData),
+                    contentType: 'application/json',
+                    success: function (data) {
+                        window.location.href = '/result/' + data.id;
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
