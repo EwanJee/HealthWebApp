@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up JDK 21
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4.2.1
         with:
           java-version: '21'  # GitHub Actions 빌드 환경용 JDK 21 설정
-          distribution: 'corretto'  # Corretto JDK 배포판을 사용
+          distribution: 'corretto'  # Amazon Corretto JDK 사용
 
       - name: Clean and Build project
         run: |
