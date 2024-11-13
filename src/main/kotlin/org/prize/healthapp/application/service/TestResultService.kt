@@ -88,9 +88,9 @@ class TestResultService(
         val sitToStandCountSum = data.map { it.sitToStandCount }.sum()
         val twoMinuteSteppingInPlaceCountSum = data.map { it.twoMinuteSteppingInPlaceCount }.sum()
         val treadmill9MinutesBpmSum = data.map { it.treadmill9MinutesBpm }.sum()
-        val thighCircumferenceLeftCmSum = data.map { it.thighCircumferenceLeftCm }.sum()
-        val thighCircumferenceRightCmSum = data.map { it.thighCircumferenceRightCm }.sum()
-        val fiveMx4ShuttleRunSecondsSum = data.map { it.fiveMx4ShuttleRunSeconds }.sum()
+        val thighCircumferenceLeftCmSum = data.map { it.eightWalk }.sum()
+        val thighCircumferenceRightCmSum = data.map { it.reaction }.sum()
+        val fiveMx4ShuttleRunSecondsSum = data.map { it.grip }.sum()
         return MyTestResultResponseDto(
             age = dto.age,
             sex = dto.sex,
@@ -110,9 +110,9 @@ class TestResultService(
                     twoMinuteSteppingInPlaceCountSum,
                 ),
             treadmill9MinutesBpm = getPercentage(dto.treadmill9MinutesBpm, treadmill9MinutesBpmSum),
-            thighCircumferenceLeftCm = getPercentage(dto.thighCircumferenceLeftCm, thighCircumferenceLeftCmSum),
-            thighCircumferenceRightCm = getPercentage(dto.thighCircumferenceRightCm, thighCircumferenceRightCmSum),
-            fiveMx4ShuttleRunSeconds = getPercentage(dto.fiveMx4ShuttleRunSeconds, fiveMx4ShuttleRunSecondsSum),
+            eightWalk = getPercentage(dto.eightWalk, thighCircumferenceLeftCmSum),
+            reaction = getPercentage(dto.reaction, thighCircumferenceRightCmSum),
+            grip = getPercentage(dto.grip, fiveMx4ShuttleRunSecondsSum),
         )
     }
 

@@ -16,9 +16,9 @@ data class TestResultAvgDto(
     var sitToStandCount: Double,
     var twoMinuteSteppingInPlaceCount: Double,
     var treadmill9MinutesBpm: Double,
-    var thighCircumferenceLeftCm: Double,
-    var thighCircumferenceRightCm: Double,
-    var fiveMx4ShuttleRunSeconds: Double,
+    var eightWalk: Double,
+    var reaction: Double,
+    var grip: Double,
 ) {
     companion object {
         fun of(
@@ -39,9 +39,9 @@ data class TestResultAvgDto(
                 sitToStandCount = data.sitToStandCount,
                 twoMinuteSteppingInPlaceCount = data.twoMinuteSteppingInPlaceCount,
                 treadmill9MinutesBpm = data.treadmill9MinutesBpm,
-                thighCircumferenceLeftCm = data.thighCircumferenceLeftCm,
-                thighCircumferenceRightCm = data.thighCircumferenceRightCm,
-                fiveMx4ShuttleRunSeconds = data.fiveMx4ShuttleRunSeconds,
+                eightWalk = data.eightWalk,
+                reaction = data.reaction,
+                grip = data.grip,
             )
     }
 
@@ -58,9 +58,9 @@ data class TestResultAvgDto(
         sitToStandCount += data.sitToStandCount
         twoMinuteSteppingInPlaceCount += data.twoMinuteSteppingInPlaceCount
         treadmill9MinutesBpm += data.treadmill9MinutesBpm
-        thighCircumferenceLeftCm += data.thighCircumferenceLeftCm
-        thighCircumferenceRightCm += data.thighCircumferenceRightCm
-        fiveMx4ShuttleRunSeconds += data.fiveMx4ShuttleRunSeconds
+        eightWalk += data.eightWalk
+        reaction += data.reaction
+        grip += data.grip
         return this
     }
 
@@ -77,8 +77,8 @@ data class TestResultAvgDto(
         sitToStandCount /= count
         twoMinuteSteppingInPlaceCount /= count
         treadmill9MinutesBpm /= count
-        thighCircumferenceLeftCm /= count
-        thighCircumferenceRightCm /= count
-        fiveMx4ShuttleRunSeconds /= count
+        eightWalk /= count
+        reaction /= count
+        grip /= count
     }
 }

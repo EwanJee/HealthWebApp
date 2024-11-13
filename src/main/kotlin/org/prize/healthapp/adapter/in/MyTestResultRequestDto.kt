@@ -17,7 +17,7 @@ data class MyTestResultRequestDto(
     val sitToStandCount: Double? = null,
     val twoMinuteSteppingInPlaceCount: Double? = null,
     val treadmill9MinutesBpm: Double? = null,
-    val thighCircumferenceLeftCm: Double? = null,
-    val thighCircumferenceRightCm: Double? = null,
-    val fiveMx4ShuttleRunSeconds: Double? = null,
+    val eightWalk: Double? = null,
+    val reaction: Double? = null,
+    val grip: Double? = null,
 )
