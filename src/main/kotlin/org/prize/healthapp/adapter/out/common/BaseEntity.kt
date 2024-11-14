@@ -1,19 +1,22 @@
 package org.prize.healthapp.adapter.out.common
 
 import jakarta.persistence.Column
+import jakarta.persistence.EntityListeners
 import jakarta.persistence.MappedSuperclass
 import org.springframework.data.annotation.CreatedDate
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
 
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener::class)
 abstract class BaseEntity {
     @CreatedDate
     @Column(name = "created_at", updatable = false)
-    private var createdAt: LocalDateTime? = null
+    var createdAt: LocalDateTime? = null
 
     @Column(name = "updated_at")
-    private var updatedAt: LocalDateTime? = null
+    var updatedAt: LocalDateTime? = null
 
     @Column(name = "deleted_at")
-    private var deletedAt: LocalDateTime? = null
+    var deletedAt: LocalDateTime? = null
 }
