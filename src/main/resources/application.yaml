@@ -2,3 +2,5 @@ spring:
   profiles:
     active: prod
     include: secret
+  config:
+    import: optional:file:.env[.properties]

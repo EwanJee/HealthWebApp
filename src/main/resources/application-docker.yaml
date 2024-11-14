@@ -1,3 +1,7 @@
+
+logging:
+  level:
+    web: debug
 spring:
   config:
     import: optional:file:.env[.properties]
@@ -39,6 +43,7 @@ springdoc:
     display-request-duration: true
     defaultModelsExpandDepth: 2
     defaultModelExpandDepth: 2
+
   show-actuator: true
   default-consumes-media-type: application/json
   default-produces-media-type: application/json
