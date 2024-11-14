@@ -499,42 +499,40 @@
                 { orderable: false, targets: [0] } // "지역" 열은 정렬 비활성화
             ]
         });
-        $('#myTable2').DataTable({
+        const table = $('#myTable2').DataTable({
             paging: true,       // 페이징 활성화
             searching: true,    // 검색 기능 활성화
             ordering: true,     // 정렬 기능 활성화
-            order: [], // 초기 정렬: "이용자 수" 열을 내림차순(desc)
+            order: [], // 초기 정렬: "나이" 열을 오름차순
             columnDefs: [
-                // { orderable: false, targets: [1] }
+                { orderable: false, targets: [] } // 특정 열에서 정렬 비활성화 (필요시 설정)
             ]
         });
         // AJAX GET 요청
         $.ajax({
-            url: '/api/v1/persons/', // 데이터를 가져올 API URL
+            url: '/api/v1/persons', // 데이터를 가져올 API URL
             type: 'GET',
             dataType: 'json',
             success: function (response) {
                 // 성공적으로 데이터를 가져왔을 때 테이블 업데이트
-                const tbody = $('#myTable tbody');
-                tbody.empty(); // 기존 데이터를 초기화
+                const table = $('#myTable').DataTable(); // 이미 초기화된 DataTable 객체 가져오기
+                table.clear(); // 기존 데이터 초기화
                 response.forEach(item => {
-                    const row = `
-                        <tr>
-                            <td>${item.location}</td>
-                            <td>${item.count}</td>
-                            <td>${item.age10s}</td>
-                            <td>${item.age20s}</td>
-                            <td>${item.age30s}</td>
-                            <td>${item.age40s}</td>
-                            <td>${item.age50s}</td>
-                            <td>${item.age60s}</td>
-                            <td>${item.age70s}</td>
-                            <td>${item.age80s}</td>
-                            <td>${item.age90s}</td>
-                        </tr>
-                    `;
-                    tbody.append(row);
+                    table.row.add([
+                        item.location,
+                        item.count,
+                        item.age10s,
+                        item.age20s,
+                        item.age30s,
+                        item.age40s,
+                        item.age50s,
+                        item.age60s,
+                        item.age70s,
+                        item.age80s,
+                        item.age90s
+                    ]);
                 });
+                table.draw();
             },
             error: function (xhr, status, error) {
                 console.error('데이터를 가져오는 중 오류 발생:', error);
@@ -545,37 +543,37 @@
             type: 'GET',
             dataType: 'json',
             success: function (response) {
-                // Populate table with data from the API
-                const tbody = $('#myTable2 tbody');
-                tbody.empty(); // Clear existing rows
+                // 기존 데이터 초기화
+                table.clear();
 
+                // 응답 데이터를 반복하면서 행 추가
                 response.forEach(item => {
-                    const row = `
-                        <tr>
-                            <td>${item.ageSexDto.ages}</td>
-                            <td>${item.ageSexDto.sex}</td>
-                            <td>${item.height}</td>
-                            <td>${item.weight}</td>
-                            <td>${item.bodyFatPercentage}</td>
-                            <td>${item.sitUpCount}</td>
-                            <td>${item.bmiKgPerM2}</td>
-                            <td>${item.crossedSitUpCount}</td>
-                            <td>${item.shuttleRunCount}</td>
-                            <td>${item.tenMx4ShuttleRunSeconds}</td>
-                            <td>${item.standingLongJumpCm}</td>
-                            <td>${item.sitToStandCount}</td>
-                            <td>${item.twoMinuteSteppingInPlaceCount}</td>
-                            <td>${item.treadmill9MinutesBpm}</td>
-                            <td>${item.eightWalk}</td>
-                            <td>${item.reaction}</td>
-                            <td>${item.grip}</td>
-                        </tr>
-                    `;
-                    tbody.append(row);
+                    table.row.add([
+                        item.ageSexDto.ages,
+                        item.ageSexDto.sex,
+                        item.height,
+                        item.weight,
+                        item.bodyFatPercentage,
+                        item.sitUpCount,
+                        item.bmiKgPerM2,
+                        item.crossedSitUpCount,
+                        item.shuttleRunCount,
+                        item.tenMx4ShuttleRunSeconds,
+                        item.standingLongJumpCm,
+                        item.sitToStandCount,
+                        item.twoMinuteSteppingInPlaceCount,
+                        item.treadmill9MinutesBpm,
+                        item.eightWalk,
+                        item.reaction,
+                        item.grip
+                    ]);
                 });
+
+                // 테이블 업데이트
+                table.draw();
             },
             error: function (xhr, status, error) {
-                console.error('Error fetching data:', error);
+                console.error('데이터를 가져오는 중 오류 발생:', error);
             }
         });
     });

@@ -54,7 +54,7 @@
 <body>
     <nav class="nav">
         <div class="logo">
-            <a href="#">My Health Check</a>
+            <a href="http://myhealthcheck.xyz">My Health Check</a>
         </div>
     </nav>
 
@@ -180,6 +180,7 @@
     <script>
         $(document).ready(function () {
             $('#submit').click(function () {
+                // Collect form data
                 const formData = {
                     age: $('#age').val(),
                     sex: $('#gender').val(),
@@ -200,20 +201,45 @@
                     grip: $('#grip').val()
                 };
 
-                $.ajax({
-                    type: 'POST',
-                    url: '/api/v1/tests/my',
-                    data: JSON.stringify(formData),
-                    contentType: 'application/json',
-                    success: function (data) {
-                        window.location.href = '/result/' + data.id;
-                    },
-                    error: function (error) {
-                        console.log(error);
+                // Validate input
+                let isValid = true;
+                Object.keys(formData).forEach(function (key) {
+                    const value = formData[key];
+
+                    // Check if required fields are filled
+                    if (!value || value.trim() === '') {
+                        alert(`${key} 항목을 입력해주세요.`);
+                        isValid = false;
+                        return false; // Exit loop early
+                    }
+
+                    // Check if numeric fields are valid numbers (including decimals)
+                    if ($(`#${key}`).attr('type') === 'number' && isNaN(parseFloat(value))) {
+                        alert(`${key} 항목에 유효한 숫자를 입력해주세요.`);
+                        isValid = false;
+                        return false; // Exit loop early
                     }
                 });
+
+                // Submit form if valid
+                if (isValid) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/v1/tests/my',
+                        data: JSON.stringify(formData),
+                        contentType: 'application/json',
+                        success: function (data) {
+                            // Navigate to /result and pass data
+                            window.location.href = `/result?id=${data.id}`;
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                }
             });
         });
+
     </script>
 </body>
 </html>

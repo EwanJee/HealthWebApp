@@ -1,5 +1,8 @@
 package org.prize.healthapp.application.service
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class MyTestResultResponseDto(
     // each test result column is percentage value.
     val age: Int,

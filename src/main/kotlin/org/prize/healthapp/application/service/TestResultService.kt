@@ -5,9 +5,12 @@ import org.prize.healthapp.adapter.`in`.MyTestResultRequestDto
 import org.prize.healthapp.application.port.`in`.TestResultCommand
 import org.prize.healthapp.application.port.out.S3Query
 import org.prize.healthapp.application.port.out.TestResultQuery
+import org.prize.healthapp.domain.exception.BusinessException
+import org.prize.healthapp.domain.exception.ErrorCode
 import org.prize.healthapp.domain.testresult.MeasurementData
 import org.prize.healthapp.domain.testresult.TestResult
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class TestResultService(
@@ -24,105 +27,101 @@ class TestResultService(
 
     override fun getTestAverage(): List<TestResultAvgDto> {
         val tests: List<TestResult> = testResultQuery.findAll()
-        val countPerAges = mutableMapOf<Int, Int>()
-        val map: MutableMap<AgeSexDto, TestResultAvgDto> = mutableMapOf()
-        tests.map { it ->
-            val ageSexDto = AgeSexDto(it.age, it.sex)
-            if (it.age in 10..19) {
-                countPerAges[10] = countPerAges.getOrDefault(10, 0) + 1
-            } else if (it.age in 20..29) {
-                countPerAges[20] = countPerAges.getOrDefault(20, 0) + 1
-            } else if (it.age in 30..39) {
-                countPerAges[30] = countPerAges.getOrDefault(30, 0) + 1
-            } else if (it.age in 40..49) {
-                countPerAges[40] = countPerAges.getOrDefault(40, 0) + 1
-            } else if (it.age in 50..59) {
-                countPerAges[50] = countPerAges.getOrDefault(50, 0) + 1
-            } else if (it.age in 60..69) {
-                countPerAges[60] = countPerAges.getOrDefault(60, 0) + 1
-            } else if (it.age in 70..79) {
-                countPerAges[70] = countPerAges.getOrDefault(70, 0) + 1
-            } else if (it.age in 80..89) {
-                countPerAges[80] = countPerAges.getOrDefault(80, 0) + 1
-            } else if (it.age in 90..150) {
-                countPerAges[90] = countPerAges.getOrDefault(90, 0) + 1
+
+        // 테스트 데이터를 나이대와 성별로 그룹화
+        val groupedData =
+            tests.groupBy {
+                val ageGroup =
+                    when (it.age) {
+                        in 10..19 -> 10
+                        in 20..29 -> 20
+                        in 30..39 -> 30
+                        in 40..49 -> 40
+                        in 50..59 -> 50
+                        in 60..69 -> 60
+                        in 70..79 -> 70
+                        in 80..89 -> 80
+                        in 90..150 -> 90
+                        else -> throw BusinessException(ErrorCode.FILE_NOT_FOUND)
+                    }
+                AgeSexDto(ageGroup, it.sex)
             }
-            val testResult: TestResultAvgDto = TestResultAvgDto.of(ageSexDto, it.data)
-            if (map.containsKey(ageSexDto)) {
-                val data: TestResultAvgDto = map[ageSexDto]!!
-                val newValue = testResult.addData(data)
-                map[ageSexDto] = newValue
-            } else {
-                map[ageSexDto] = testResult
+
+        // 그룹화된 데이터로 평균 계산
+        val result =
+            groupedData.map { (ageSexDto, group) ->
+                val aggregated =
+                    group.fold(TestResultAvgDto.of(ageSexDto, group.first().data)) { acc, testResult ->
+                        acc.addData(TestResultAvgDto.of(ageSexDto, testResult.data))
+                    }
+                aggregated.divide() // 평균 계산
+                aggregated
             }
-        }
-        map.map {
-            val (key, value) = it
-            println(key.ages)
-            val count = countPerAges[key.ages]!!
-            value.divide(count)
-        }
-        return map.values.toList()
+
+        return result
     }
 
-    override fun testMy(myTestResultRequestDto: MyTestResultRequestDto): MyTestResultResponseDto? {
+    override fun testMy(myTestResultRequestDto: MyTestResultRequestDto): MyTestResultResponseDto {
         val tests: List<TestResult> =
             testResultQuery.findByAgeAndSex(myTestResultRequestDto.age, myTestResultRequestDto.sex)
         val data = tests.map { it.data }
-        return calculateMyTestResult(myTestResultRequestDto, data)
+        val myTestResponseDto = calculateMyTestResult(myTestResultRequestDto, data)
+        testResultQuery.save(myTestResponseDto)
+        return myTestResponseDto
     }
+
+    override fun getMy(id: UUID): MyTestResultResponseDto = testResultQuery.findById(id)
 
     private fun calculateMyTestResult(
         dto: MyTestResultRequestDto,
         data: List<MeasurementData>,
     ): MyTestResultResponseDto {
-        val heightSum = data.map { it.height }.sum()
-        val weightSum = data.map { it.weight }.sum()
-        val bmiSum = data.map { it.bmiKgPerM2 }.sum()
-        val bodyFatPercentageSum = data.map { it.bodyFatPercentage }.sum()
-        val sitUpCountSum = data.map { it.sitUpCount }.sum()
-        val crossedSitUpCountSum = data.map { it.crossedSitUpCount }.sum()
-        val shuttleRunCountSum = data.map { it.shuttleRunCount }.sum()
-        val tenMx4ShuttleRunSecondsSum = data.map { it.tenMx4ShuttleRunSeconds }.sum()
-        val standingLongJumpCmSum = data.map { it.standingLongJumpCm }.sum()
-        val sitToStandCountSum = data.map { it.sitToStandCount }.sum()
-        val twoMinuteSteppingInPlaceCountSum = data.map { it.twoMinuteSteppingInPlaceCount }.sum()
-        val treadmill9MinutesBpmSum = data.map { it.treadmill9MinutesBpm }.sum()
-        val eightWalk = data.map { it.eightWalk }.sum()
-        val reaction = data.map { it.reaction }.sum()
-        val grip = data.map { it.grip }.sum()
+        // 각 필드의 합계 계산
+        val sums =
+            data.fold(MeasurementData()) { acc, measurement ->
+                MeasurementData(
+                    height = acc.height + measurement.height,
+                    weight = acc.weight + measurement.weight,
+                    bodyFatPercentage = acc.bodyFatPercentage + measurement.bodyFatPercentage,
+                    sitUpCount = acc.sitUpCount + measurement.sitUpCount,
+                    bmiKgPerM2 = acc.bmiKgPerM2 + measurement.bmiKgPerM2,
+                    crossedSitUpCount = acc.crossedSitUpCount + measurement.crossedSitUpCount,
+                    shuttleRunCount = acc.shuttleRunCount + measurement.shuttleRunCount,
+                    tenMx4ShuttleRunSeconds = acc.tenMx4ShuttleRunSeconds + measurement.tenMx4ShuttleRunSeconds,
+                    standingLongJumpCm = acc.standingLongJumpCm + measurement.standingLongJumpCm,
+                    sitToStandCount = acc.sitToStandCount + measurement.sitToStandCount,
+                    twoMinuteSteppingInPlaceCount = acc.twoMinuteSteppingInPlaceCount + measurement.twoMinuteSteppingInPlaceCount,
+                    treadmill9MinutesBpm = acc.treadmill9MinutesBpm + measurement.treadmill9MinutesBpm,
+                    eightWalk = acc.eightWalk + measurement.eightWalk,
+                    reaction = acc.reaction + measurement.reaction,
+                    grip = acc.grip + measurement.grip,
+                )
+            }
+
+        // 퍼센티지 계산 및 응답 생성
         return MyTestResultResponseDto(
             age = dto.age,
             sex = dto.sex,
-            height = getPercentage(dto.height, heightSum),
-            weight = getPercentage(dto.weight, weightSum),
-            bodyFatPercentage = getPercentage(dto.bodyFatPercentage, bodyFatPercentageSum),
-            sitUpCount = getPercentage(dto.sitUpCount, sitUpCountSum),
-            bmiKgPerM2 = getPercentage(dto.bmiKgPerM2, bmiSum),
-            crossedSitUpCount = getPercentage(dto.crossedSitUpCount, crossedSitUpCountSum),
-            shuttleRunCount = getPercentage(dto.shuttleRunCount, shuttleRunCountSum),
-            tenMx4ShuttleRunSeconds = getPercentage(dto.tenMx4ShuttleRunSeconds, tenMx4ShuttleRunSecondsSum),
-            standingLongJumpCm = getPercentage(dto.standingLongJumpCm, standingLongJumpCmSum),
-            sitToStandCount = getPercentage(dto.sitToStandCount, sitToStandCountSum),
-            twoMinuteSteppingInPlaceCount =
-                getPercentage(
-                    dto.twoMinuteSteppingInPlaceCount,
-                    twoMinuteSteppingInPlaceCountSum,
-                ),
-            treadmill9MinutesBpm = getPercentage(dto.treadmill9MinutesBpm, treadmill9MinutesBpmSum),
-            eightWalk = getPercentage(dto.eightWalk, eightWalk),
-            reaction = getPercentage(dto.reaction, reaction),
-            grip = getPercentage(dto.grip, grip),
+            height = getPercentage(dto.height, sums.height),
+            weight = getPercentage(dto.weight, sums.weight),
+            bodyFatPercentage = getPercentage(dto.bodyFatPercentage, sums.bodyFatPercentage),
+            sitUpCount = getPercentage(dto.sitUpCount, sums.sitUpCount),
+            bmiKgPerM2 = getPercentage(dto.bmiKgPerM2, sums.bmiKgPerM2),
+            crossedSitUpCount = getPercentage(dto.crossedSitUpCount, sums.crossedSitUpCount),
+            shuttleRunCount = getPercentage(dto.shuttleRunCount, sums.shuttleRunCount),
+            tenMx4ShuttleRunSeconds = getPercentage(dto.tenMx4ShuttleRunSeconds, sums.tenMx4ShuttleRunSeconds),
+            standingLongJumpCm = getPercentage(dto.standingLongJumpCm, sums.standingLongJumpCm),
+            sitToStandCount = getPercentage(dto.sitToStandCount, sums.sitToStandCount),
+            twoMinuteSteppingInPlaceCount = getPercentage(dto.twoMinuteSteppingInPlaceCount, sums.twoMinuteSteppingInPlaceCount),
+            treadmill9MinutesBpm = getPercentage(dto.treadmill9MinutesBpm, sums.treadmill9MinutesBpm),
+            eightWalk = getPercentage(dto.eightWalk, sums.eightWalk),
+            reaction = getPercentage(dto.reaction, sums.reaction),
+            grip = getPercentage(dto.grip, sums.grip),
         )
     }
 
     private fun getPercentage(
         myscore: Double?,
         sum: Double,
-    ): Double? {
-        if (myscore != null) {
-            return (myscore / sum * 100)
-        }
-        return null
-    }
+    ): Double? = if (myscore != null && sum != 0.0) (myscore / sum * 100) else null
 }

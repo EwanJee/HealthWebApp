@@ -42,7 +42,6 @@
             background-color: #ddd;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         }
-
         .link-list {
             width: 30%;
             background-color: #f8f9fa;
@@ -59,10 +58,18 @@
             font-weight: bold;
             margin: 10px 0;
             cursor: pointer;
+            padding: 10px; /* 클릭 영역 확대 */
+            border: 1px solid transparent; /* 기본적으로 테두리 없음 */
+            border-radius: 5px; /* 약간의 둥근 모서리 */
+            display: inline-block;
         }
 
-        .link-list a:hover {
-            color: #0056b3;
+        .link-list a:hover, .link-list a:focus {
+            color: #fff;
+            background-color: #0056b3;
+            border-color: #0056b3;
+            outline: none; /* 기본 outline 제거 */
+            text-decoration: none; /* 하이퍼링크 밑줄 제거 */
         }
 
         .video-container {
@@ -93,7 +100,7 @@
                         </a>
                     </span>
                     <span class="navbar-caption-wrap"><a class="navbar-caption text-black text-primary display-4"
-                                                         href="../static/index.html#header05-1">MyHealthCheck</a></span>
+                                                         href="http://www.myhealthcheck.xyz">MyHealthCheck</a></span>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"
                         data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent"
@@ -119,7 +126,7 @@
                 <div class="col-md-12 col-lg-9">
                     <h1 class="mbr-section-title mbr-fonts-style mb-4 display-1"><strong>측정 영상 </strong>
                     </h1>
-                    <h2 class="mbr-text mbr-fonts-style mb-4 display-7"> 목록에 있는 영상들을 보고 측정해보세요</h2>
+                    <h2 class="mbr-text mbr-fonts-style mb-4 display-7"> 목록에 있는 카테고리들을 클릭해 영상을 볼 수 있습니다</h2>
                 </div>
             </div>
             <div class="containera">
@@ -137,10 +144,11 @@
                     <a onclick="changeVideo('https://www.youtube.com/embed/9lrZBXpO76c?si=p5Zb0MWmonPAS5q1')">반응 시간</a>
                     <a onclick="changeVideo('https://www.youtube.com/embed/0NyiYjRJL_c?si=k4Q6d5CxnOD120x9')">악력</a>
                 </div>
-        
+
+
                 <!-- Embedded Video -->
                 <div class="video-container">
-                    <iframe id="videoFrame" src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allowfullscreen></iframe>
+                    <iframe id="videoFrame" src="https://www.youtube.com/embed/RZ4xuuFnZiU?si=X2-W0DvVkdGBGDUm" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>

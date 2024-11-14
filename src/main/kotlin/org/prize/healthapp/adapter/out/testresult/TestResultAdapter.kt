@@ -3,6 +3,7 @@
 package org.prize.healthapp.adapter.out.testresult
 
 import org.prize.healthapp.application.port.out.TestResultQuery
+import org.prize.healthapp.application.service.MyTestResultResponseDto
 import org.prize.healthapp.domain.exception.BusinessException
 import org.prize.healthapp.domain.exception.ErrorCode
 import org.prize.healthapp.domain.testresult.TestResult
@@ -10,6 +11,7 @@ import org.prize.healthapp.infrastructure.annotations.Adapter
 import org.slf4j.Logger
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.transaction.annotation.Transactional
+import java.util.*
 
 @Transactional(readOnly = false)
 @Adapter
@@ -36,6 +38,11 @@ class TestResultAdapter(
         }
     }
 
+    override fun save(test: MyTestResultResponseDto) {
+        val testEntity = TestResultEntity.from(test)
+        testResultRepository.save(testEntity)
+    }
+
     override fun findAll(): List<TestResult> = testResultRepository.findAll().map { it.toTestResult() }
 
     override fun findByAgeAndSex(
@@ -45,4 +52,12 @@ class TestResultAdapter(
         testResultRepository.findByAgeAndSex(age, sex).map {
             it.toTestResult()
         }
+
+    override fun findById(id: UUID): MyTestResultResponseDto {
+        val testResultEntity =
+            testResultRepository
+                .findById(id)
+                .orElseThrow { BusinessException(ErrorCode.NOT_FOUND) }
+        return testResultEntity.toMyTestResultResponseDto()
+    }
 }
