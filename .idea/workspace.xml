@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="30c254e9-fe6c-4241-bab6-bc3195100d5f" name="Changes" comment="feat: 마이그레이션 코드 작성">
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/videos.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/videos.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="healthapp" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="healthapp" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="healthapp" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="healthapp" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;EwanJee&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/EwanJee/HealthWebApp.git&quot;,
+    &quot;accountId&quot;: &quot;4ad9d2eb-572e-41ba-8530-33dccf235587&quot;
+  }
+}</component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2oOTvVMzwOKFDdhEMG7fjaflqY5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.compose.prod.yaml.nginx: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.compose.prod.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.compose.yaml.mysql: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.prod.yaml.nginx: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build HealthWebApp.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HealthWebApp [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HealthWebApp [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HealthWebApp [jar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HealthWebApp [testClasses].executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.test.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.user.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.videos.html.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.HealthappApplication.executor&quot;: &quot;Run&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jeeewan/GitHub/HealthWebApp/src/main/resources/templates&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15917969&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4604651&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ],
+    &quot;kotlin-gradle-user-dirs&quot;: [
+      &quot;/Users/jeeewan/.gradle&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static/assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/static" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$/proxy" />
+      <recent name="$PROJECT_DIR$/src/main/resources/static/data/measurement_by_category" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="org.prize.healthapp.domain.member" />
+      <recent name="org.prize.healthapp.domain.exception" />
+      <recent name="org.prize.healthapp.infrastructure.configuration" />
+      <recent name="org.prize.healthapp.infrastructure.annotations" />
+      <recent name="org.prize.healthapp.adapter.in" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.HealthappApplication">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/healthapp/src/main/resources/static/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="test.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/healthapp/src/main/resources/templates/test.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="user.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/healthapp/src/main/resources/templates/user.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="videos.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/healthapp/src/main/resources/templates/videos.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="HealthWebApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="HealthWebApp" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="HealthWebApp" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="Python.FlaskServer">
+      <module name="HealthWebApp" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="HealthappApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="healthapp.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.prize.healthapp.HealthappApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.prize.healthapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="HealthWebApp" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Docutils task">
+      <module name="HealthWebApp" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Sphinx task">
+      <module name="HealthWebApp" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.HealthappApplication" />
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="JavaScript Debug.videos.html" />
+        <item itemvalue="JavaScript Debug.user.html" />
+        <item itemvalue="JavaScript Debug.test.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.19072.14" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.19072.14" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="30c254e9-fe6c-4241-bab6-bc3195100d5f" name="Changes" comment="" />
+      <created>1730739853306</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1730739853306</updated>
+      <workItem from="1730739856104" duration="1900000" />
+      <workItem from="1730741761613" duration="20331000" />
+      <workItem from="1730780766520" duration="1415000" />
+      <workItem from="1730783702441" duration="617000" />
+      <workItem from="1730785918049" duration="2983000" />
+      <workItem from="1730827211046" duration="26279000" />
+      <workItem from="1730864906585" duration="12880000" />
+      <workItem from="1730952961006" duration="4000" />
+      <workItem from="1730952973582" duration="22000" />
+      <workItem from="1730953004613" duration="11000" />
+      <workItem from="1730953024812" duration="7000000" />
+      <workItem from="1730991685097" duration="15382000" />
+      <workItem from="1731277525697" duration="2442000" />
+      <workItem from="1731280054828" duration="5343000" />
+      <workItem from="1731455005663" duration="6043000" />
+      <workItem from="1731463355861" duration="1701000" />
+      <workItem from="1731465678322" duration="448000" />
+      <workItem from="1731466203467" duration="4039000" />
+      <workItem from="1731531236923" duration="2597000" />
+      <workItem from="1731536133910" duration="19315000" />
+      <workItem from="1731623502760" duration="1363000" />
+      <workItem from="1731651779331" duration="473000" />
+      <workItem from="1731658799323" duration="162000" />
+      <workItem from="1731708622699" duration="10054000" />
+      <workItem from="1731721508442" duration="351000" />
+    </task>
+    <task id="LOCAL-00032" summary="feat : docker compose 연동을 위한 추가">
+      <option name="closed" value="true" />
+      <created>1730959631866</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1730959631866</updated>
+    </task>
+    <task id="LOCAL-00033" summary="feat : prod secret yaml 추가">
+      <option name="closed" value="true" />
+      <created>1730959694121</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1730959694121</updated>
+    </task>
+    <task id="LOCAL-00034" summary="feat : nginx conf 경로 변경">
+      <option name="closed" value="true" />
+      <created>1730960259876</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1730960259876</updated>
+    </task>
+    <task id="LOCAL-00035" summary="feat : prod 위한 설정">
+      <option name="closed" value="true" />
+      <created>1730991935182</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1730991935182</updated>
+    </task>
+    <task id="LOCAL-00036" summary="feat : prod 위한 설정">
+      <option name="closed" value="true" />
+      <created>1731027501429</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1731027501429</updated>
+    </task>
+    <task id="LOCAL-00037" summary="feat : prod 위한 설정">
+      <option name="closed" value="true" />
+      <created>1731028088406</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1731028088406</updated>
+    </task>
+    <task id="LOCAL-00038" summary="feat : prod 위한 설정">
+      <option name="closed" value="true" />
+      <created>1731028105511</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1731028105511</updated>
+    </task>
+    <task id="LOCAL-00039" summary="feat : prod 위한 설정">
+      <option name="closed" value="true" />
+      <created>1731032787854</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1731032787854</updated>
+    </task>
+    <task id="LOCAL-00040" summary="feat : prod 위한 설정">
+      <option name="closed" value="true" />
+      <created>1731033281574</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1731033281574</updated>
+    </task>
+    <task id="LOCAL-00041" summary="feat : prod 위한 설정">
+      <option name="closed" value="true" />
+      <created>1731034395769</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1731034395769</updated>
+    </task>
+    <task id="LOCAL-00042" summary="feat : prod 위한 설정">
+      <option name="closed" value="true" />
+      <created>1731038634679</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1731038634679</updated>
+    </task>
+    <task id="LOCAL-00043" summary="feat : swagger 반영을 위한 설정">
+      <option name="closed" value="true" />
+      <created>1731278206328</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1731278206328</updated>
+    </task>
+    <task id="LOCAL-00044" summary="feat : 도커 설정 자동화">
+      <option name="closed" value="true" />
+      <created>1731278540176</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1731278540176</updated>
+    </task>
+    <task id="LOCAL-00045" summary="feat : typo 수정">
+      <option name="closed" value="true" />
+      <created>1731279046637</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1731279046637</updated>
+    </task>
+    <task id="LOCAL-00046" summary="feat : 경로 삭제">
+      <option name="closed" value="true" />
+      <created>1731279249521</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1731279249521</updated>
+    </task>
+    <task id="LOCAL-00047" summary="feat : 경로에 / 중복으로 인한 에러 해결">
+      <option name="closed" value="true" />
+      <created>1731280592440</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1731280592440</updated>
+    </task>
+    <task id="LOCAL-00048" summary="feat : docker 버전 설정 변경">
+      <option name="closed" value="true" />
+      <created>1731284199913</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1731284199913</updated>
+    </task>
+    <task id="LOCAL-00049" summary="feat : 에러 핸들링 수정">
+      <option name="closed" value="true" />
+      <created>1731284222278</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1731284222278</updated>
+    </task>
+    <task id="LOCAL-00050" summary="feat : TestResult 100대 90대로 설정">
+      <option name="closed" value="true" />
+      <created>1731285386483</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1731285386483</updated>
+    </task>
+    <task id="LOCAL-00051" summary="feat : created_at 반영을 위한 설정">
+      <option name="closed" value="true" />
+      <created>1731286131666</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1731286131666</updated>
+    </task>
+    <task id="LOCAL-00052" summary="feat : 배포 자동화를 위한 설정">
+      <option name="closed" value="true" />
+      <created>1731456142176</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1731456142177</updated>
+    </task>
+    <task id="LOCAL-00053" summary="feat : 배포 자동화를 위한 설정">
+      <option name="closed" value="true" />
+      <created>1731456326667</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1731456326667</updated>
+    </task>
+    <task id="LOCAL-00054" summary="feat : 배포 자동화를 위한 설정">
+      <option name="closed" value="true" />
+      <created>1731456479075</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1731456479075</updated>
+    </task>
+    <task id="LOCAL-00055" summary="feat : 배포 자동화를 위한 설정">
+      <option name="closed" value="true" />
+      <created>1731456991876</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1731456991876</updated>
+    </task>
+    <task id="LOCAL-00056" summary="feat : front 세팅">
+      <option name="closed" value="true" />
+      <created>1731538626105</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1731538626105</updated>
+    </task>
+    <task id="LOCAL-00057" summary="feat : front 세팅">
+      <option name="closed" value="true" />
+      <created>1731538628974</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1731538628974</updated>
+    </task>
+    <task id="LOCAL-00058" summary="feat : ddl auto update로 변경">
+      <option name="closed" value="true" />
+      <created>1731538638623</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1731538638623</updated>
+    </task>
+    <task id="LOCAL-00059" summary="feat : 카테고리명 변경으로 필드명 변경">
+      <option name="closed" value="true" />
+      <created>1731538655548</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1731538655548</updated>
+    </task>
+    <task id="LOCAL-00060" summary="feat : 이미지 추가">
+      <option name="closed" value="true" />
+      <created>1731538911169</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1731538911169</updated>
+    </task>
+    <task id="LOCAL-00061" summary="feat : swagger tag 추가">
+      <option name="closed" value="true" />
+      <created>1731539608577</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1731539608577</updated>
+    </task>
+    <task id="LOCAL-00062" summary="refactor : 필드명 변경">
+      <option name="closed" value="true" />
+      <created>1731547069049</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1731547069050</updated>
+    </task>
+    <task id="LOCAL-00063" summary="feat: logging 기능 추가">
+      <option name="closed" value="true" />
+      <created>1731547104214</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1731547104214</updated>
+    </task>
+    <task id="LOCAL-00064" summary="feat: thymeleaf 추가 (경로 탐색 문제 해결)">
+      <option name="closed" value="true" />
+      <created>1731547120694</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1731547120694</updated>
+    </task>
+    <task id="LOCAL-00065" summary="feat: thymeleaf 추가로 경로 탐색 해결">
+      <option name="closed" value="true" />
+      <created>1731547132228</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1731547132228</updated>
+    </task>
+    <task id="LOCAL-00066" summary="feat: 경로 탐색 문제로 인한 이동">
+      <option name="closed" value="true" />
+      <created>1731547156551</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1731547156551</updated>
+    </task>
+    <task id="LOCAL-00067" summary="feat: template 폴더에도 assets 추가">
+      <option name="closed" value="true" />
+      <created>1731547182420</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1731547182420</updated>
+    </task>
+    <task id="LOCAL-00068" summary="feat: ajax 문제 해결 및 평균값 로직 오류 해결">
+      <option name="closed" value="true" />
+      <created>1731621884701</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1731621884701</updated>
+    </task>
+    <task id="LOCAL-00069" summary="feat: f">
+      <option name="closed" value="true" />
+      <created>1731621936693</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1731621936693</updated>
+    </task>
+    <task id="LOCAL-00070" summary="feat: created_at null 삽입으로 인한 문제 해결">
+      <option name="closed" value="true" />
+      <created>1731623697304</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1731623697304</updated>
+    </task>
+    <task id="LOCAL-00071" summary="feat: HTTPS SSL 인증서 로드 밸런서 Health Check를 위한 처리">
+      <option name="closed" value="true" />
+      <created>1731658953418</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1731658953418</updated>
+    </task>
+    <task id="LOCAL-00072" summary="feat: flyway install (migration)">
+      <option name="closed" value="true" />
+      <created>1731718223227</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1731718223227</updated>
+    </task>
+    <task id="LOCAL-00073" summary="refactor: front에서 테이블 칼럼 명 수정">
+      <option name="closed" value="true" />
+      <created>1731718382547</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1731718382548</updated>
+    </task>
+    <task id="LOCAL-00074" summary="feat: result.html">
+      <option name="closed" value="true" />
+      <created>1731718398914</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1731718398914</updated>
+    </task>
+    <task id="LOCAL-00075" summary="feat: flyway 세팅">
+      <option name="closed" value="true" />
+      <created>1731718420024</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1731718420024</updated>
+    </task>
+    <task id="LOCAL-00076" summary="feat: MyTest 를 위한 변경 및 세팅">
+      <option name="closed" value="true" />
+      <created>1731718452441</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1731718452441</updated>
+    </task>
+    <task id="LOCAL-00077" summary="feat: migration을 위해 설정">
+      <option name="closed" value="true" />
+      <created>1731720655621</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1731720655621</updated>
+    </task>
+    <task id="LOCAL-00078" summary="feat: flyway-mysql 추가">
+      <option name="closed" value="true" />
+      <created>1731720669461</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1731720669461</updated>
+    </task>
+    <task id="LOCAL-00079" summary="feat: prod와 환경 맞추기 위해 설정">
+      <option name="closed" value="true" />
+      <created>1731720680517</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1731720680517</updated>
+    </task>
+    <task id="LOCAL-00080" summary="feat: 마이그레이션 코드 작성">
+      <option name="closed" value="true" />
+      <created>1731720692491</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1731720692491</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat : 배포 자동화를 위한 설정" />
+    <MESSAGE value="feat : front 세팅" />
+    <MESSAGE value="feat : ddl auto update로 변경" />
+    <MESSAGE value="feat : 카테고리명 변경으로 필드명 변경" />
+    <MESSAGE value="feat : 이미지 추가" />
+    <MESSAGE value="feat : swagger tag 추가" />
+    <MESSAGE value="refactor : 필드명 변경" />
+    <MESSAGE value="feat: logging 기능 추가" />
+    <MESSAGE value="feat: thymeleaf 추가 (경로 탐색 문제 해결)" />
+    <MESSAGE value="feat: thymeleaf 추가로 경로 탐색 해결" />
+    <MESSAGE value="feat: 경로 탐색 문제로 인한 이동" />
+    <MESSAGE value="feat: template 폴더에도 assets 추가" />
+    <MESSAGE value="feat: ajax 문제 해결 및 평균값 로직 오류 해결" />
+    <MESSAGE value="feat: f" />
+    <MESSAGE value="feat: created_at null 삽입으로 인한 문제 해결" />
+    <MESSAGE value="feat: HTTPS SSL 인증서 로드 밸런서 Health Check를 위한 처리" />
+    <MESSAGE value="feat: flyway install (migration)" />
+    <MESSAGE value="refactor: front에서 테이블 칼럼 명 수정" />
+    <MESSAGE value="feat: result.html" />
+    <MESSAGE value="feat: flyway 세팅" />
+    <MESSAGE value="feat: MyTest 를 위한 변경 및 세팅" />
+    <MESSAGE value="feat: migration을 위해 설정" />
+    <MESSAGE value="feat: flyway-mysql 추가" />
+    <MESSAGE value="feat: prod와 환경 맞추기 위해 설정" />
+    <MESSAGE value="feat: 마이그레이션 코드 작성" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 마이그레이션 코드 작성" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

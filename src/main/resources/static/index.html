@@ -548,6 +548,7 @@
 
                 // 응답 데이터를 반복하면서 행 추가
                 response.forEach(item => {
+<<<<<<< HEAD
                     table.row.add([
                         item.ageSexDto.ages,
                         item.ageSexDto.sex,
@@ -567,6 +568,30 @@
                         item.reaction,
                         item.grip
                     ]);
+=======
+                    const row = `
+                        <tr>
+                            <td>${item.ageSexDto.ages}</td>
+                            <td>${item.ageSexDto.sex}</td>
+                            <td>${item.height}</td>
+                            <td>${item.weight}</td>
+                            <td>${item.bodyFatPercentage}</td>
+                            <td>${item.sitUpCount}</td>
+                            <td>${item.bmiKgPerM2}</td>
+                            <td>${item.crossedSitUpCount}</td>
+                            <td>${item.shuttleRunCount}</td>
+                            <td>${item.tenMx4ShuttleRunSeconds}</td>
+                            <td>${item.standingLongJumpCm}</td>
+                            <td>${item.sitToStandCount}</td>
+                            <td>${item.twoMinuteSteppingInPlaceCount}</td>
+                            <td>${item.treadmill9MinutesBpm}</td>
+                            <td>${item.eightWalk}</td>
+                            <td>${item.reaction}</td>
+                            <td>${item.grip}</td>
+                        </tr>
+                    `;
+                    tbody.append(row);
+>>>>>>> 9194083 (feat: 경로 탐색 문제로 인한 이동)
                 });
 
                 // 테이블 업데이트
