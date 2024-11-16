@@ -3,6 +3,7 @@
 package org.prize.healthapp.adapter.`in`
 
 data class MyTestResultRequestDto(
+    val name: String,
     val age: Int,
     val sex: String,
     val height: Double? = null,
