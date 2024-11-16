@@ -5,8 +5,9 @@ package org.prize.healthapp.adapter.`in`
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.prize.healthapp.application.port.`in`.TestResultCommand
-import org.prize.healthapp.application.service.MyTestResultResponseDto
+import org.prize.healthapp.application.service.MyTestResultReponseDto
 import org.prize.healthapp.application.service.TestResultAvgDto
+import org.prize.healthapp.domain.member.Member
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
-import java.util.UUID
 
 @Tag(name = "Test 컨트롤러", description = "Test 컨트롤러 API")
 @RequestMapping("/api/v1/tests")
@@ -38,19 +38,21 @@ class TestController(
         return ResponseEntity.ok().body(result)
     }
 
+    @Operation(summary = "내가 입력한 Test 결과 값", description = "나의 Test 에 대한 id를 반환합니다.")
     @PostMapping("/my")
-    fun getMyResult(
+    fun postMyResult(
         @RequestBody myTestResultRequestDto: MyTestResultRequestDto,
-    ): ResponseEntity<MyTestResultResponseDto> {
+    ): ResponseEntity<MyTestResultReponseDto> {
         val result = testResultCommand.testMy(myTestResultRequestDto)
         return ResponseEntity.ok().body(result)
     }
 
+    @Operation(summary = "내가 입력한 Test 결과 값", description = "나의 Test 에 대한 정보를 반환합니다.")
     @GetMapping("/my")
     fun getMyResult(
-        @RequestParam("id") id: UUID,
-    ): ResponseEntity<MyTestResultResponseDto> {
-        val result = testResultCommand.getMy(id)
+        @RequestParam("id") id: String,
+    ): ResponseEntity<Member> {
+        val result = testResultCommand.findMyTest(id)
         return ResponseEntity.ok().body(result)
     }
 }

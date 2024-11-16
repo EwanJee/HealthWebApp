@@ -1,19 +1,19 @@
-@file:Suppress("ktlint:standard:no-wildcard-imports", "ktlint:standard:package-name")
+@file:Suppress("ktlint:standard:package-name")
 
 package org.prize.healthapp.application.port.`in`
 
 import org.prize.healthapp.adapter.`in`.FileInfoDto
 import org.prize.healthapp.adapter.`in`.MyTestResultRequestDto
-import org.prize.healthapp.application.service.MyTestResultResponseDto
+import org.prize.healthapp.application.service.MyTestResultReponseDto
 import org.prize.healthapp.application.service.TestResultAvgDto
-import java.util.*
+import org.prize.healthapp.domain.member.Member
 
 interface TestResultCommand {
     fun createTests(fileInfoDto: FileInfoDto): Int
 
     fun getTestAverage(): List<TestResultAvgDto>
 
-    fun testMy(myTestResultRequestDto: MyTestResultRequestDto): MyTestResultResponseDto
+    fun testMy(myTestResultRequestDto: MyTestResultRequestDto): MyTestResultReponseDto
 
-    fun getMy(id: UUID): MyTestResultResponseDto
+    fun findMyTest(id: String): Member
 }
