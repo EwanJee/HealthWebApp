@@ -70,13 +70,13 @@ class TestResultService(
         return result
     }
 
-    override fun testMy(myTestResultRequestDto: MyTestResultRequestDto): MyTestResultReponseDto {
+    override fun testMy(myTestResultRequestDto: MyTestResultRequestDto): MyTestResultResponseDto {
         val tests: List<TestResult> =
             testResultQuery.findByAgeAndSex(myTestResultRequestDto.age, myTestResultRequestDto.sex)
         val data = tests.map { it.data }
         val member = calculateMyTestResult(myTestResultRequestDto, data)
         val uuid = memberQuery.save(member)
-        return MyTestResultReponseDto(myTestResultRequestDto.name, Id.uuidToBase64(uuid))
+        return MyTestResultResponseDto(myTestResultRequestDto.name, Id.uuidToBase64(uuid))
     }
 
     override fun findMyTest(id: String): Member {
