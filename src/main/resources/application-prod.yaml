@@ -4,6 +4,7 @@ spring:
     password: ${PASSWORD}
     url: ${URL}
     baseline-on-migrate: true # 기존 데이터는 건드리지 않으면서 스키마의 변경 사항만 적용
+    enabled: true
   config:
     import: optional:file:.env[.properties]
   servlet:
