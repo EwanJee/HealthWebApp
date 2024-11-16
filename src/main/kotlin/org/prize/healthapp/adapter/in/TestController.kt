@@ -5,7 +5,7 @@ package org.prize.healthapp.adapter.`in`
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.prize.healthapp.application.port.`in`.TestResultCommand
-import org.prize.healthapp.application.service.MyTestResultReponseDto
+import org.prize.healthapp.application.service.MyTestResultResponseDto
 import org.prize.healthapp.application.service.TestResultAvgDto
 import org.prize.healthapp.domain.member.Member
 import org.springframework.http.ResponseEntity
@@ -42,7 +42,7 @@ class TestController(
     @PostMapping("/my")
     fun postMyResult(
         @RequestBody myTestResultRequestDto: MyTestResultRequestDto,
-    ): ResponseEntity<MyTestResultReponseDto> {
+    ): ResponseEntity<MyTestResultResponseDto> {
         val result = testResultCommand.testMy(myTestResultRequestDto)
         return ResponseEntity.ok().body(result)
     }
