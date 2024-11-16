@@ -1,4 +1,9 @@
 spring:
+  flyway:
+    user: ${USERNAME}
+    password: ${PASSWORD}
+    url: ${URL}
+    baseline-on-migrate: true # 기존 데이터는 건드리지 않으면서 스키마의 변경 사항만 적용
   config:
     import: optional:file:.env[.properties]
   servlet:
@@ -15,7 +20,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: validate
     show-sql: true
     open-in-view: false
 
@@ -26,6 +31,7 @@ spring:
           batch_size: 800
         order_updates: true
         order_inserts: true
+    generate-ddl: false
   data:
     redis:
       port: 6379
