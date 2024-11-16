@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko">
-<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -144,7 +143,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <!-- ajax로 추가 -->
+                    <!-- ajax로 추가 -->
                     </tbody>
                 </table>
             </div>
@@ -398,7 +397,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <!-- ajax로 추가 -->
+                    <!-- ajax로 추가 -->
                     </tbody>
                 </table>
             </div>
@@ -427,11 +426,9 @@
                                     style="font-size: 1.4rem;">02-410-1114</a><br></li>
                             <li class="mbr-text item-wrap">FAX: <a href="https://wa.me/12345678910"
                                                                    class="text-primary">(02) 410 1219</a></li>
-                            </li>
                             <li class="mbr-text item-wrap"><br></li>
                             <li class="mbr-text item-wrap">본사 주소:</li>
                             <li class="mbr-text item-wrap">05540 서울특별시 송파구 올림픽로 424 (방이동, 올림픽문화센터)</li>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -496,7 +493,7 @@
             ordering: true,     // 정렬 기능 활성화
             order: [[1, 'desc']], // 초기 정렬: "이용자 수" 열을 내림차순(desc)
             columnDefs: [
-                { orderable: false, targets: [0] } // "지역" 열은 정렬 비활성화
+                {orderable: false, targets: [0]} // "지역" 열은 정렬 비활성화
             ]
         });
         const table = $('#myTable2').DataTable({
@@ -505,7 +502,7 @@
             ordering: true,     // 정렬 기능 활성화
             order: [], // 초기 정렬: "나이" 열을 오름차순
             columnDefs: [
-                { orderable: false, targets: [] } // 특정 열에서 정렬 비활성화 (필요시 설정)
+                {orderable: false, targets: []} // 특정 열에서 정렬 비활성화 (필요시 설정)
             ]
         });
         // AJAX GET 요청
@@ -548,7 +545,6 @@
 
                 // 응답 데이터를 반복하면서 행 추가
                 response.forEach(item => {
-<<<<<<< HEAD
                     table.row.add([
                         item.ageSexDto.ages,
                         item.ageSexDto.sex,
@@ -568,7 +564,6 @@
                         item.reaction,
                         item.grip
                     ]);
-=======
                     const row = `
                         <tr>
                             <td>${item.ageSexDto.ages}</td>
@@ -591,7 +586,6 @@
                         </tr>
                     `;
                     tbody.append(row);
->>>>>>> 9194083 (feat: 경로 탐색 문제로 인한 이동)
                 });
 
                 // 테이블 업데이트
