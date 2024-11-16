@@ -28,6 +28,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.flywaydb:flyway-mysql")
     implementation("org.flywaydb:flyway-core")
     implementation("io.github.cdimascio:java-dotenv:5.2.2")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
