@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: prod
+    active: docker
     include: secret
   config:
     import: optional:file:.env[.properties]
