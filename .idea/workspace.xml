@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30c254e9-fe6c-4241-bab6-bc3195100d5f" name="Changes" comment="feat: 마이그레이션 코드 작성">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/videos.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/videos.html" afterDir="false" />
-    </list>
+    <list default="true" id="30c254e9-fe6c-4241-bab6-bc3195100d5f" name="Changes" comment="feat: 마이그레이션 코드 작성" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -342,7 +339,7 @@
       <workItem from="1731651779331" duration="473000" />
       <workItem from="1731658799323" duration="162000" />
       <workItem from="1731708622699" duration="10054000" />
-      <workItem from="1731721508442" duration="351000" />
+      <workItem from="1731721508442" duration="651000" />
     </task>
     <task id="LOCAL-00032" summary="feat : docker compose 연동을 위한 추가">
       <option name="closed" value="true" />
@@ -747,19 +744,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/dev" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
