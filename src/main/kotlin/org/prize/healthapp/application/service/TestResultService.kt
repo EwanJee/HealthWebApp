@@ -1,10 +1,15 @@
 package org.prize.healthapp.application.service
 
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
 import org.prize.healthapp.adapter.`in`.FileInfoDto
 import org.prize.healthapp.adapter.`in`.MyTestResultRequestDto
 import org.prize.healthapp.application.port.`in`.TestResultCommand
+import org.prize.healthapp.application.port.out.MemberQuery
 import org.prize.healthapp.application.port.out.S3Query
 import org.prize.healthapp.application.port.out.TestResultQuery
+import org.prize.healthapp.domain.base64.Id
+import org.prize.healthapp.domain.member.Member
 import org.prize.healthapp.domain.testresult.MeasurementData
 import org.prize.healthapp.domain.testresult.TestResult
 import org.springframework.stereotype.Service
@@ -13,6 +18,7 @@ import org.springframework.stereotype.Service
 class TestResultService(
     private val testResultQuery: TestResultQuery,
     private val s3Query: S3Query,
+    private val memberQuery: MemberQuery,
 ) : TestResultCommand {
     override fun createTests(fileInfoDto: FileInfoDto): Int {
         val (fileName) = fileInfoDto
@@ -27,7 +33,11 @@ class TestResultService(
         val countPerAges = mutableMapOf<Int, Int>()
         val map: MutableMap<AgeSexDto, TestResultAvgDto> = mutableMapOf()
         tests.map { it ->
-            val ageSexDto = AgeSexDto(it.age, it.sex)
+            var gender = "남"
+            if (it.sex.contains("F")) {
+                gender = "여"
+            }
+            val ageSexDto = AgeSexDto(it.age, gender)
             if (it.age in 10..19) {
                 countPerAges[10] = countPerAges.getOrDefault(10, 0) + 1
             } else if (it.age in 20..29) {
@@ -65,17 +75,25 @@ class TestResultService(
         return map.values.toList()
     }
 
-    override fun testMy(myTestResultRequestDto: MyTestResultRequestDto): MyTestResultResponseDto? {
+    override fun testMy(myTestResultRequestDto: MyTestResultRequestDto): MyTestResultReponseDto {
         val tests: List<TestResult> =
             testResultQuery.findByAgeAndSex(myTestResultRequestDto.age, myTestResultRequestDto.sex)
         val data = tests.map { it.data }
-        return calculateMyTestResult(myTestResultRequestDto, data)
+        val member = calculateMyTestResult(myTestResultRequestDto, data)
+        val uuid = memberQuery.save(member)
+        return MyTestResultReponseDto(myTestResultRequestDto.name, Id.uuidToBase64(uuid))
+    }
+
+    override fun findMyTest(id: String): Member {
+        val uuid = Id.base64ToUuid(id)
+        val member = memberQuery.findById(uuid)
+        return member
     }
 
     private fun calculateMyTestResult(
         dto: MyTestResultRequestDto,
         data: List<MeasurementData>,
-    ): MyTestResultResponseDto {
+    ): Member {
         val heightSum = data.map { it.height }.sum()
         val weightSum = data.map { it.weight }.sum()
         val bmiSum = data.map { it.bmiKgPerM2 }.sum()
@@ -91,28 +109,35 @@ class TestResultService(
         val thighCircumferenceLeftCmSum = data.map { it.eightWalk }.sum()
         val thighCircumferenceRightCmSum = data.map { it.reaction }.sum()
         val fiveMx4ShuttleRunSecondsSum = data.map { it.grip }.sum()
-        return MyTestResultResponseDto(
+        val jsonObject =
+            buildJsonObject {
+                put("height", getPercentage(dto.height, heightSum))
+                put("weight", getPercentage(dto.weight, weightSum))
+                put("bodyFatPercentage", getPercentage(dto.bodyFatPercentage, bodyFatPercentageSum))
+                put("sitUpCount", getPercentage(dto.sitUpCount, sitUpCountSum))
+                put("bmiKgPerM2", getPercentage(dto.bmiKgPerM2, bmiSum))
+                put("crossedSitUpCount", getPercentage(dto.crossedSitUpCount, crossedSitUpCountSum))
+                put("shuttleRunCount", getPercentage(dto.shuttleRunCount, shuttleRunCountSum))
+                put(
+                    "tenMx4ShuttleRunSeconds",
+                    getPercentage(dto.tenMx4ShuttleRunSeconds, tenMx4ShuttleRunSecondsSum),
+                )
+                put("standingLongJumpCm", getPercentage(dto.standingLongJumpCm, standingLongJumpCmSum))
+                put("sitToStandCount", getPercentage(dto.sitToStandCount, sitToStandCountSum))
+                put(
+                    "twoMinuteSteppingInPlaceCount",
+                    getPercentage(dto.twoMinuteSteppingInPlaceCount, twoMinuteSteppingInPlaceCountSum),
+                )
+                put("treadmill9MinutesBpm", getPercentage(dto.treadmill9MinutesBpm, treadmill9MinutesBpmSum))
+                put("eightWalk", getPercentage(dto.eightWalk, thighCircumferenceLeftCmSum))
+                put("reaction", getPercentage(dto.reaction, thighCircumferenceRightCmSum))
+                put("grip", getPercentage(dto.grip, fiveMx4ShuttleRunSecondsSum))
+            }
+        return Member(
+            name = dto.name,
             age = dto.age,
             sex = dto.sex,
-            height = getPercentage(dto.height, heightSum),
-            weight = getPercentage(dto.weight, weightSum),
-            bodyFatPercentage = getPercentage(dto.bodyFatPercentage, bodyFatPercentageSum),
-            sitUpCount = getPercentage(dto.sitUpCount, sitUpCountSum),
-            bmiKgPerM2 = getPercentage(dto.bmiKgPerM2, bmiSum),
-            crossedSitUpCount = getPercentage(dto.crossedSitUpCount, crossedSitUpCountSum),
-            shuttleRunCount = getPercentage(dto.shuttleRunCount, shuttleRunCountSum),
-            tenMx4ShuttleRunSeconds = getPercentage(dto.tenMx4ShuttleRunSeconds, tenMx4ShuttleRunSecondsSum),
-            standingLongJumpCm = getPercentage(dto.standingLongJumpCm, standingLongJumpCmSum),
-            sitToStandCount = getPercentage(dto.sitToStandCount, sitToStandCountSum),
-            twoMinuteSteppingInPlaceCount =
-                getPercentage(
-                    dto.twoMinuteSteppingInPlaceCount,
-                    twoMinuteSteppingInPlaceCountSum,
-                ),
-            treadmill9MinutesBpm = getPercentage(dto.treadmill9MinutesBpm, treadmill9MinutesBpmSum),
-            eightWalk = getPercentage(dto.eightWalk, thighCircumferenceLeftCmSum),
-            reaction = getPercentage(dto.reaction, thighCircumferenceRightCmSum),
-            grip = getPercentage(dto.grip, fiveMx4ShuttleRunSecondsSum),
+            data = jsonObject,
         )
     }
 
