@@ -25,7 +25,7 @@ services:
 #      - my_network
 
   mysql:
-    image: 'mysql:latest'
+    image: 'mysql:8.0.39'
     environment:
       - 'MYSQL_DATABASE=mydatabase'
       - 'MYSQL_PASSWORD=secret'
