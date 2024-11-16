@@ -9,6 +9,8 @@ import org.prize.healthapp.application.port.out.MemberQuery
 import org.prize.healthapp.application.port.out.S3Query
 import org.prize.healthapp.application.port.out.TestResultQuery
 import org.prize.healthapp.domain.base64.Id
+import org.prize.healthapp.domain.exception.BusinessException
+import org.prize.healthapp.domain.exception.ErrorCode
 import org.prize.healthapp.domain.member.Member
 import org.prize.healthapp.domain.testresult.MeasurementData
 import org.prize.healthapp.domain.testresult.TestResult
@@ -23,56 +25,49 @@ class TestResultService(
     override fun createTests(fileInfoDto: FileInfoDto): Int {
         val (fileName) = fileInfoDto
         val csvData: List<Map<String, String>> = s3Query.getCSV(fileName)
-        val tests = TestResult.from(csvData)
+        val tests: List<TestResult> = TestResult.from(csvData)
         testResultQuery.save(tests)
         return tests.size
     }
 
     override fun getTestAverage(): List<TestResultAvgDto> {
         val tests: List<TestResult> = testResultQuery.findAll()
-        val countPerAges = mutableMapOf<Int, Int>()
-        val map: MutableMap<AgeSexDto, TestResultAvgDto> = mutableMapOf()
-        tests.map { it ->
-            var gender = "남"
-            if (it.sex.contains("F")) {
-                gender = "여"
+
+        // 테스트 데이터를 나이대와 성별로 그룹화
+        val groupedData =
+            tests.groupBy {
+                val ageGroup =
+                    when (it.age) {
+                        in 10..19 -> 10
+                        in 20..29 -> 20
+                        in 30..39 -> 30
+                        in 40..49 -> 40
+                        in 50..59 -> 50
+                        in 60..69 -> 60
+                        in 70..79 -> 70
+                        in 80..89 -> 80
+                        in 90..150 -> 90
+                        else -> throw BusinessException(ErrorCode.FILE_NOT_FOUND)
+                    }
+                var gender = "남"
+                if (it.sex == "F") {
+                    gender = "여"
+                }
+                AgeSexDto(ageGroup, gender)
             }
-            val ageSexDto = AgeSexDto(it.age, gender)
-            if (it.age in 10..19) {
-                countPerAges[10] = countPerAges.getOrDefault(10, 0) + 1
-            } else if (it.age in 20..29) {
-                countPerAges[20] = countPerAges.getOrDefault(20, 0) + 1
-            } else if (it.age in 30..39) {
-                countPerAges[30] = countPerAges.getOrDefault(30, 0) + 1
-            } else if (it.age in 40..49) {
-                countPerAges[40] = countPerAges.getOrDefault(40, 0) + 1
-            } else if (it.age in 50..59) {
-                countPerAges[50] = countPerAges.getOrDefault(50, 0) + 1
-            } else if (it.age in 60..69) {
-                countPerAges[60] = countPerAges.getOrDefault(60, 0) + 1
-            } else if (it.age in 70..79) {
-                countPerAges[70] = countPerAges.getOrDefault(70, 0) + 1
-            } else if (it.age in 80..89) {
-                countPerAges[80] = countPerAges.getOrDefault(80, 0) + 1
-            } else if (it.age in 90..150) {
-                countPerAges[90] = countPerAges.getOrDefault(90, 0) + 1
+
+        // 그룹화된 데이터로 평균 계산
+        val result =
+            groupedData.map { (ageSexDto, group) ->
+                val aggregated =
+                    group.fold(TestResultAvgDto.of(ageSexDto, group.first().data)) { acc, testResult ->
+                        acc.addData(TestResultAvgDto.of(ageSexDto, testResult.data))
+                    }
+                aggregated.divide() // 평균 계산
+                aggregated
             }
-            val testResult: TestResultAvgDto = TestResultAvgDto.of(ageSexDto, it.data)
-            if (map.containsKey(ageSexDto)) {
-                val data: TestResultAvgDto = map[ageSexDto]!!
-                val newValue = testResult.addData(data)
-                map[ageSexDto] = newValue
-            } else {
-                map[ageSexDto] = testResult
-            }
-        }
-        map.map {
-            val (key, value) = it
-            println(key.ages)
-            val count = countPerAges[key.ages]!!
-            value.divide(count)
-        }
-        return map.values.toList()
+
+        return result
     }
 
     override fun testMy(myTestResultRequestDto: MyTestResultRequestDto): MyTestResultReponseDto {

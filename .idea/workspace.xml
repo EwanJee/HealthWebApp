@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30c254e9-fe6c-4241-bab6-bc3195100d5f" name="Changes" comment="feat: 마이그레이션 코드 작성" />
+    <list default="true" id="30c254e9-fe6c-4241-bab6-bc3195100d5f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/ktlint-plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/prize/healthapp/application/service/MyTestResultResponseDto.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/prize/healthapp/adapter/in/view/ControllerGroup.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/prize/healthapp/adapter/in/view/ControllerGroup.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/prize/healthapp/application/service/MyTestResultReponseDto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/prize/healthapp/application/service/MyTestResultReponseDto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/prize/healthapp/application/service/TestResultService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/prize/healthapp/application/service/TestResultService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-docker.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-docker.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,6 +56,21 @@
                 <item name="healthapp" type="f1a62948:ProjectNode" />
                 <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
                 <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="healthapp" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
+                <item name="org.flywaydb:flyway-mysql:10.10.0" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="healthapp" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
+                <item name="org.flywaydb:flyway-mysql:10.10.0" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
+                <item name="org.flywaydb:flyway-core:10.10.0" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
               </path>
             </expand>
             <select />
@@ -90,51 +118,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Docker.compose.prod.yaml.nginx: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.compose.prod.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.compose.yaml.mysql: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.prod.yaml.nginx: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build HealthWebApp.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HealthWebApp [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HealthWebApp [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HealthWebApp [jar].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HealthWebApp [testClasses].executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.test.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.user.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.videos.html.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.HealthappApplication.executor&quot;: &quot;Run&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/jeeewan/GitHub/HealthWebApp/src/main/resources/templates&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15917969&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.4604651&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.compose.prod.yaml.nginx: Compose Deployment.executor": "Run",
+    "Docker.compose.prod.yaml: Compose Deployment.executor": "Run",
+    "Docker.compose.yaml.mysql: Compose Deployment.executor": "Run",
+    "Docker.compose.yaml: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.prod.yaml.nginx: Compose Deployment.executor": "Run",
+    "Gradle.Build HealthWebApp.executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
+    "Gradle.HealthWebApp [build].executor": "Run",
+    "Gradle.HealthWebApp [clean].executor": "Run",
+    "Gradle.HealthWebApp [jar].executor": "Run",
+    "Gradle.HealthWebApp [testClasses].executor": "Run",
+    "JavaScript Debug.index.html.executor": "Run",
+    "JavaScript Debug.test.html.executor": "Run",
+    "JavaScript Debug.user.html.executor": "Run",
+    "JavaScript Debug.videos.html.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.HealthappApplication.executor": "Run",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/jeeewan/GitHub/HealthWebApp/src/main/resources/templates",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15917969",
+    "project.structure.side.proportion": "0.4604651",
+    "settings.editor.selected.configurable": "preferences.ktlint-plugin",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;kotlin-gradle-user-dirs&quot;: [
-      &quot;/Users/jeeewan/.gradle&quot;
+    "kotlin-gradle-user-dirs": [
+      "/Users/jeeewan/.gradle"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/templates" />
@@ -340,14 +369,6 @@
       <workItem from="1731658799323" duration="162000" />
       <workItem from="1731708622699" duration="10054000" />
       <workItem from="1731721508442" duration="651000" />
-    </task>
-    <task id="LOCAL-00032" summary="feat : docker compose 연동을 위한 추가">
-      <option name="closed" value="true" />
-      <created>1730959631866</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1730959631866</updated>
     </task>
     <task id="LOCAL-00033" summary="feat : prod secret yaml 추가">
       <option name="closed" value="true" />
@@ -733,7 +754,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731720692491</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="feat: MyTest 를 위한 변경 및 세팅">
+      <option name="closed" value="true" />
+      <created>1731731657489</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1731731657490</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -744,7 +773,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="dev2" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -771,12 +812,12 @@
     <MESSAGE value="refactor: front에서 테이블 칼럼 명 수정" />
     <MESSAGE value="feat: result.html" />
     <MESSAGE value="feat: flyway 세팅" />
-    <MESSAGE value="feat: MyTest 를 위한 변경 및 세팅" />
     <MESSAGE value="feat: migration을 위해 설정" />
     <MESSAGE value="feat: flyway-mysql 추가" />
     <MESSAGE value="feat: prod와 환경 맞추기 위해 설정" />
     <MESSAGE value="feat: 마이그레이션 코드 작성" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 마이그레이션 코드 작성" />
+    <MESSAGE value="feat: MyTest 를 위한 변경 및 세팅" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: MyTest 를 위한 변경 및 세팅" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

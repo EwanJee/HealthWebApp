@@ -15,4 +15,7 @@ class ControllerGroup {
 
     @GetMapping("/videos")
     fun videos(): String = "videos"
+
+    @GetMapping("/result")
+    fun result(): String = "result"
 }
