@@ -7,6 +7,8 @@ import jakarta.persistence.Table
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
+import org.hibernate.annotations.JdbcTypeCode
+import org.hibernate.type.SqlTypes
 import org.prize.healthapp.adapter.out.common.BaseEntity
 import org.prize.healthapp.domain.member.Member
 import java.util.UUID
@@ -22,6 +24,7 @@ class MemberEntity(
 ) : BaseEntity() {
     @Id
     @Column(name = "id", columnDefinition = "VARCHAR(36)")
+    @JdbcTypeCode(SqlTypes.VARCHAR)
     var id: UUID? = id
         protected set
 

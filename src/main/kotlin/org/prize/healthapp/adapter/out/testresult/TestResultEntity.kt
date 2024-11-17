@@ -43,8 +43,10 @@ class TestResultEntity(
     }
 
     companion object {
+        val json = Json { encodeDefaults = true }
+
         fun from(test: TestResult): TestResultEntity {
-            val dataJsonObject = Json.encodeToJsonElement(test.data) as JsonObject
+            val dataJsonObject = json.encodeToJsonElement(test.data) as JsonObject
             return TestResultEntity(
                 test.age,
                 test.sex,

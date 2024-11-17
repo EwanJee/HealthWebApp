@@ -8,7 +8,8 @@ import org.prize.healthapp.application.port.`in`.TestResultCommand
 import org.prize.healthapp.application.port.out.MemberQuery
 import org.prize.healthapp.application.port.out.S3Query
 import org.prize.healthapp.application.port.out.TestResultQuery
-import org.prize.healthapp.domain.base64.Id
+import org.prize.healthapp.domain.base64.toBase64
+import org.prize.healthapp.domain.base64.toUUID
 import org.prize.healthapp.domain.exception.BusinessException
 import org.prize.healthapp.domain.exception.ErrorCode
 import org.prize.healthapp.domain.member.Member
@@ -72,15 +73,32 @@ class TestResultService(
 
     override fun testMy(myTestResultRequestDto: MyTestResultRequestDto): MyTestResultResponseDto {
         val tests: List<TestResult> =
-            testResultQuery.findByAgeAndSex(myTestResultRequestDto.age, myTestResultRequestDto.sex)
+            testResultQuery.findByAgeAndSex(
+                calculateDecade(myTestResultRequestDto.age),
+                findGender(myTestResultRequestDto.sex),
+            )
         val data = tests.map { it.data }
         val member = calculateMyTestResult(myTestResultRequestDto, data)
         val uuid = memberQuery.save(member)
-        return MyTestResultResponseDto(myTestResultRequestDto.name, Id.uuidToBase64(uuid))
+        return MyTestResultResponseDto(myTestResultRequestDto.name, uuid.toBase64())
     }
 
+    private fun findGender(sex: String): String =
+        if (sex.contains("남")) {
+            "M"
+        } else {
+            "F"
+        }
+
+    private fun calculateDecade(age: Int): Int =
+        if (age < 0) {
+            throw BusinessException(ErrorCode.WRONG_FILE_FORMAT)
+        } else {
+            age / 10 * 10
+        }
+
     override fun findMyTest(id: String): Member {
-        val uuid = Id.base64ToUuid(id)
+        val uuid = id.toUUID()
         val member = memberQuery.findById(uuid)
         return member
     }
@@ -89,44 +107,32 @@ class TestResultService(
         dto: MyTestResultRequestDto,
         data: List<MeasurementData>,
     ): Member {
-        val heightSum = data.map { it.height }.sum()
-        val weightSum = data.map { it.weight }.sum()
-        val bmiSum = data.map { it.bmiKgPerM2 }.sum()
-        val bodyFatPercentageSum = data.map { it.bodyFatPercentage }.sum()
-        val sitUpCountSum = data.map { it.sitUpCount }.sum()
-        val crossedSitUpCountSum = data.map { it.crossedSitUpCount }.sum()
-        val shuttleRunCountSum = data.map { it.shuttleRunCount }.sum()
-        val tenMx4ShuttleRunSecondsSum = data.map { it.tenMx4ShuttleRunSeconds }.sum()
-        val standingLongJumpCmSum = data.map { it.standingLongJumpCm }.sum()
-        val sitToStandCountSum = data.map { it.sitToStandCount }.sum()
-        val twoMinuteSteppingInPlaceCountSum = data.map { it.twoMinuteSteppingInPlaceCount }.sum()
-        val treadmill9MinutesBpmSum = data.map { it.treadmill9MinutesBpm }.sum()
-        val thighCircumferenceLeftCmSum = data.map { it.eightWalk }.sum()
-        val thighCircumferenceRightCmSum = data.map { it.reaction }.sum()
-        val fiveMx4ShuttleRunSecondsSum = data.map { it.grip }.sum()
         val jsonObject =
             buildJsonObject {
-                put("height", getPercentage(dto.height, heightSum))
-                put("weight", getPercentage(dto.weight, weightSum))
-                put("bodyFatPercentage", getPercentage(dto.bodyFatPercentage, bodyFatPercentageSum))
-                put("sitUpCount", getPercentage(dto.sitUpCount, sitUpCountSum))
-                put("bmiKgPerM2", getPercentage(dto.bmiKgPerM2, bmiSum))
-                put("crossedSitUpCount", getPercentage(dto.crossedSitUpCount, crossedSitUpCountSum))
-                put("shuttleRunCount", getPercentage(dto.shuttleRunCount, shuttleRunCountSum))
+                put("height", getPercentile(dto.height, data.map { it.height }))
+                put("weight", getPercentile(dto.weight, data.map { it.weight }))
+                put("bodyFatPercentage", getPercentile(dto.bodyFatPercentage, data.map { it.bodyFatPercentage }))
+                put("sitUpCount", getPercentile(dto.sitUpCount, data.map { it.sitUpCount }))
+                put("bmiKgPerM2", getPercentile(dto.bmiKgPerM2, data.map { it.bmiKgPerM2 }))
+                put("crossedSitUpCount", getPercentile(dto.crossedSitUpCount, data.map { it.crossedSitUpCount }))
+                put("shuttleRunCount", getPercentile(dto.shuttleRunCount, data.map { it.shuttleRunCount }))
                 put(
                     "tenMx4ShuttleRunSeconds",
-                    getPercentage(dto.tenMx4ShuttleRunSeconds, tenMx4ShuttleRunSecondsSum),
+                    getPercentile(dto.tenMx4ShuttleRunSeconds, data.map { it.tenMx4ShuttleRunSeconds }),
                 )
-                put("standingLongJumpCm", getPercentage(dto.standingLongJumpCm, standingLongJumpCmSum))
-                put("sitToStandCount", getPercentage(dto.sitToStandCount, sitToStandCountSum))
+                put("standingLongJumpCm", getPercentile(dto.standingLongJumpCm, data.map { it.standingLongJumpCm }))
+                put("sitToStandCount", getPercentile(dto.sitToStandCount, data.map { it.sitToStandCount }))
                 put(
                     "twoMinuteSteppingInPlaceCount",
-                    getPercentage(dto.twoMinuteSteppingInPlaceCount, twoMinuteSteppingInPlaceCountSum),
+                    getPercentile(dto.twoMinuteSteppingInPlaceCount, data.map { it.twoMinuteSteppingInPlaceCount }),
                 )
-                put("treadmill9MinutesBpm", getPercentage(dto.treadmill9MinutesBpm, treadmill9MinutesBpmSum))
-                put("eightWalk", getPercentage(dto.eightWalk, thighCircumferenceLeftCmSum))
-                put("reaction", getPercentage(dto.reaction, thighCircumferenceRightCmSum))
-                put("grip", getPercentage(dto.grip, fiveMx4ShuttleRunSecondsSum))
+                put(
+                    "treadmill9MinutesBpm",
+                    getPercentile(dto.treadmill9MinutesBpm, data.map { it.treadmill9MinutesBpm }),
+                )
+                put("eightWalk", getPercentile(dto.eightWalk, data.map { it.eightWalk }))
+                put("reaction", getPercentile(dto.reaction, data.map { it.reaction }))
+                put("grip", getPercentile(dto.grip, data.map { it.grip }))
             }
         return Member(
             name = dto.name,
@@ -136,13 +142,17 @@ class TestResultService(
         )
     }
 
-    private fun getPercentage(
-        myscore: Double?,
-        sum: Double,
-    ): Double? {
-        if (myscore != null) {
-            return (myscore / sum * 100)
-        }
-        return null
+    private fun getPercentile(
+        score: Double,
+        allScores: List<Double>,
+    ): Double {
+        val filteredScores = allScores.filter { it > 0 }
+        if (filteredScores.isEmpty()) return 0.0
+
+        val countLowerScores = filteredScores.count { it < score }
+
+        val total = filteredScores.size
+
+        return 100.0 * (1.0 - (countLowerScores.toDouble() / total))
     }
 }
