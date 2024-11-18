@@ -28,6 +28,9 @@ repositories {
 }
 
 dependencies {
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+    implementation("io.netty:netty-all")
     implementation("org.flywaydb:flyway-mysql")
     implementation("org.flywaydb:flyway-core")
     implementation("io.github.cdimascio:java-dotenv:5.2.2")
@@ -42,6 +45,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    testImplementation("io.projectreactor:reactor-test")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
