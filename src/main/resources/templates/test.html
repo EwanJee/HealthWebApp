@@ -65,6 +65,12 @@
                 <ol>
                     <li>
                         <div class="form-group">
+                            <label for="name">이름:</label>
+                            <input type="number" class="form-control" id="name" name="name" placeholder="이름을 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
                             <label for="age">나이:</label>
                             <input type="number" class="form-control" id="age" name="age" placeholder="나이를 입력하세요" required>
                         </div>
@@ -182,23 +188,24 @@
             $('#submit').click(function () {
                 // Collect form data
                 const formData = {
-                    age: $('#age').val(),
+                    name: $('#name').val(), // 동적으로 설정 가능
+                    age: parseInt($('#age').val()),
                     sex: $('#gender').val(),
-                    height: $('#height').val(),
-                    weight: $('#weight').val(),
-                    bodyFatPercentage: $('#bodyFatPercentage').val(),
-                    sitUpCount: $('#situps').val(),
-                    bmiKgPerM2: $('#bmi').val(),
-                    crossedSitUpCount: $('#cross-situps').val(),
-                    shuttleRunCount: $('#shuttle-run').val(),
-                    tenMx4ShuttleRunSeconds: $('#10m-run').val(),
-                    standingLongJumpCm: $('#jump').val(),
-                    sitToStandCount: $('#sit-stand').val(),
-                    twoMinuteSteppingInPlaceCount: $('#walking').val(),
-                    treadmill9MinutesBpm: $('#treadmill').val(),
-                    eightWalk: $('#eight-walk').val(),
-                    reaction: $('#reaction').val(),
-                    grip: $('#grip').val()
+                    height: parseFloat($('#height').val()),
+                    weight: parseFloat($('#weight').val()),
+                    bodyFatPercentage: parseFloat($('#bodyFatPercentage').val()),
+                    sitUpCount: parseFloat($('#situps').val()),
+                    bmiKgPerM2: parseFloat($('#bmi').val()),
+                    crossedSitUpCount: parseFloat($('#cross-situps').val()),
+                    shuttleRunCount: parseFloat($('#shuttle-run').val()),
+                    tenMx4ShuttleRunSeconds: parseFloat($('#10m-run').val()),
+                    standingLongJumpCm: parseFloat($('#jump').val()),
+                    sitToStandCount: parseFloat($('#sit-stand').val()),
+                    twoMinuteSteppingInPlaceCount: parseFloat($('#walking').val()),
+                    treadmill9MinutesBpm: parseFloat($('#treadmill').val()),
+                    eightWalk: parseFloat($('#eight-walk').val()),
+                    reaction: parseFloat($('#reaction').val()),
+                    grip: parseFloat($('#grip').val())
                 };
 
                 // Validate input
@@ -230,10 +237,11 @@
                         contentType: 'application/json',
                         success: function (data) {
                             // Navigate to /result and pass data
-                            window.location.href = `/result?id=${data.id}`;
+                            window.location.href = `/result?id=${data.base64}`;
                         },
                         error: function (error) {
-                            console.log(error);
+                            console.error('Error:', error);
+                            alert('요청 중 오류가 발생했습니다.');
                         }
                     });
                 }
