@@ -26,7 +26,7 @@ class StadiumController(
         @RequestParam("city") city: String,
         @RequestParam("district") district: String,
         @RequestParam("page", defaultValue = "0") page: Int, // 기본값 0
-        @RequestParam("size", defaultValue = "1000") size: Int, // 기본값 10
+        @RequestParam("size", defaultValue = "300") size: Int, // 기본값 10
     ): ResponseEntity<Page<StadiumResponseDto>> {
         val pageable = PageRequest.of(page, size)
         val result = stadiumCommand.getBy(city, district, pageable)

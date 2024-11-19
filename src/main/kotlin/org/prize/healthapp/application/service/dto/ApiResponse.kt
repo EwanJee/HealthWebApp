@@ -44,7 +44,7 @@ data class StadiumItem(
     var faci_lat: String = "", // 위도
     var faci_cd: String = "", // 시설 코드
     var faci_zip: String = "", // 우편번호
-    var faci_gfa: Int = 0, // 시설 면적
+    var faci_gfa: Long = 0, // 시설 면적
     var faci_road_daddr: String = "", // 도로명 상세 주소
     var ftype_nm: String = "", // 시설 유형 명칭 (예: "골프")
     var cpb_nm: String = "", // 구 (예: 송파구)

@@ -66,7 +66,7 @@
                     <li>
                         <div class="form-group">
                             <label for="name">이름:</label>
-                            <input type="number" class="form-control" id="name" name="name" placeholder="이름을 입력하세요" required>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요" required>
                         </div>
                     </li>
                     <li>
@@ -185,10 +185,13 @@
     </div>
     <script>
         $(document).ready(function () {
-            $('#submit').click(function () {
-                // Collect form data
+            $('#submit').click(function (event) {
+                // 폼 기본 동작 차단 (혹시 기본 동작이 설정되어 있을 경우 대비)
+                event.preventDefault();
+
+                // 폼 데이터 수집
                 const formData = {
-                    name: $('#name').val(), // 동적으로 설정 가능
+                    name: $('#name').val(),
                     age: parseInt($('#age').val()),
                     sex: $('#gender').val(),
                     height: parseFloat($('#height').val()),
@@ -208,35 +211,35 @@
                     grip: parseFloat($('#grip').val())
                 };
 
-                // Validate input
+                // 입력값 유효성 검사
                 let isValid = true;
                 Object.keys(formData).forEach(function (key) {
                     const value = formData[key];
 
-                    // Check if required fields are filled
-                    if (!value || value.trim() === '') {
+                    // 필수 입력값 확인
+                    if (value === undefined || value === null || value === '') {
                         alert(`${key} 항목을 입력해주세요.`);
                         isValid = false;
-                        return false; // Exit loop early
+                        return false; // 유효성 검사가 실패하면 중단
                     }
 
-                    // Check if numeric fields are valid numbers (including decimals)
-                    if ($(`#${key}`).attr('type') === 'number' && isNaN(parseFloat(value))) {
-                        alert(`${key} 항목에 유효한 숫자를 입력해주세요.`);
+                    // 숫자 필드에 숫자가 아닌 값이 입력되었는지 확인
+                    if (!isNaN(value) && typeof value === 'number' && value <= 0) {
+                        alert(`${key} 항목에 올바른 값을 입력해주세요.`);
                         isValid = false;
-                        return false; // Exit loop early
+                        return false;
                     }
                 });
 
-                // Submit form if valid
                 if (isValid) {
+                    // AJAX 요청
                     $.ajax({
                         type: 'POST',
                         url: '/api/v1/tests/my',
                         data: JSON.stringify(formData),
                         contentType: 'application/json',
                         success: function (data) {
-                            // Navigate to /result and pass data
+                            // 결과 페이지로 이동
                             window.location.href = `/result?id=${data.base64}`;
                         },
                         error: function (error) {
