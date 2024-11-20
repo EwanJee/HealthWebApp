@@ -15,6 +15,7 @@ import java.util.*
 class MemberAdapter(
     private val memberRepository: MemberRepository,
 ) : MemberQuery {
+    @Transactional
     override fun save(member: Member): UUID {
         val uuid = UUID.randomUUID()
         memberRepository.save(MemberEntity.from(member, uuid))

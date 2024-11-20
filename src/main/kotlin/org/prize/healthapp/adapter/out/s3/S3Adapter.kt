@@ -1,3 +1,5 @@
+@file:Suppress("ktlint:standard:no-wildcard-imports")
+
 package org.prize.healthapp.adapter.out.s3
 
 import com.amazonaws.services.s3.AmazonS3
