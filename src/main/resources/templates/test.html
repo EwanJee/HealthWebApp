@@ -12,25 +12,21 @@
             margin: 0;
             padding: 0;
         }
-
         .nav {
             background-color: #007bff;
             padding: 15px 0;
             color: white;
             text-align: center;
         }
-
         .nav .logo a {
             color: white;
             font-size: 1.5em;
             font-weight: bold;
             text-decoration: none;
         }
-
         .question-container {
             padding: 20px;
         }
-
         .questions {
             background: white;
             border-radius: 8px;
@@ -39,20 +35,16 @@
             max-width: 800px;
             margin: 20px auto;
         }
-
         ol {
             padding-left: 20px;
         }
-
         li {
             margin-bottom: 20px;
         }
-
         .btn-primary {
             background-color: #007bff;
             border: none;
         }
-
         .btn-primary:hover {
             background-color: #0056b3;
         }
@@ -60,227 +52,205 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<nav class="nav">
-    <div class="logo">
-        <a href="http://myhealthcheck.xyz">My Health Check</a>
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://myhealthcheck.xyz">My Health Check</a>
+        </div>
+    </nav>
+
+    <div class="question-container">
+        <div class="questions">
+            <h2 class="text-center">체력 측정 검사표</h2>
+            <form id="health-form">
+                <ol>
+                    <li>
+                        <div class="form-group">
+                            <label for="name">이름:</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="age">나이:</label>
+                            <input type="number" class="form-control" id="age" name="age" placeholder="나이를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="gender">성별:</label>
+                            <select class="form-control" id="gender" name="gender" required>
+                                <option value="">성별을 선택하세요</option>
+                                <option value="남성">남성</option>
+                                <option value="여성">여성</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="weight">몸무게 (kg):</label>
+                            <input type="number" class="form-control" id="weight" name="weight" placeholder="몸무게를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="height">키 (cm):</label>
+                            <input type="number" class="form-control" id="height" name="height" placeholder="키를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="bodyFatPercentage">체지방률:</label>
+                            <input type="number" class="form-control" id="bodyFatPercentage" name="bodyFatPercentage" placeholder="체지방률 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="bmi">BMI:</label>
+                            <input type="number" class="form-control" id="bmi" name="bmi" placeholder="bmi를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="situps">앉아 윗몸 말아 올리기 (회):</label>
+                            <input type="number" class="form-control" id="situps" name="situps" placeholder="횟수를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="cross-situps">교차 윗몸일으키기 (회):</label>
+                            <input type="number" class="form-control" id="cross-situps" name="crossSitups" placeholder="횟수를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="shuttle-run">왕복 오래 달리기 (회):</label>
+                            <input type="number" class="form-control" id="shuttle-run" name="shuttleRun" placeholder="횟수를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="10m-run">10m 4회 왕복 오래 달리기 (초):</label>
+                            <input type="number" class="form-control" id="10m-run" name="tenMeterRun" placeholder="시간을 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="jump">제자리 멀리 뛰기 (cm):</label>
+                            <input type="number" class="form-control" id="jump" name="jump" placeholder="거리(cm)를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="sit-stand">앉았다 일어서기 (회):</label>
+                            <input type="number" class="form-control" id="sit-stand" name="sitStand" placeholder="횟수를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="walking">2분간 제자리 걷기 (걸음):</label>
+                            <input type="number" class="form-control" id="walking" name="walking" placeholder="걸음 수를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="eight-walk">8자 보행 (초):</label>
+                            <input type="number" class="form-control" id="eight-walk" name="eightWalk" placeholder="시간을 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="treadmill">트레드밀 (9분, km):</label>
+                            <input type="number" class="form-control" id="treadmill" name="treadmill" placeholder="거리(km)를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="reaction">반응 시간 (ms):</label>
+                            <input type="number" class="form-control" id="reaction" name="reaction" placeholder="시간(ms)를 입력하세요" required>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-group">
+                            <label for="grip">악력 (kg):</label>
+                            <input type="number" class="form-control" id="grip" name="grip" placeholder="힘(kg)를 입력하세요" required>
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="text-center">
+                    <button type="button" id="submit" class="btn btn-primary btn-lg">결과 보러가기</button>
+                </div>
+            </form>
+        </div>
     </div>
-</nav>
+    <script>
+        $(document).ready(function () {
+            $('#submit').click(function (event) {
+                // 폼 기본 동작 차단 (혹시 기본 동작이 설정되어 있을 경우 대비)
+                event.preventDefault();
 
-<div class="question-container">
-    <div class="questions">
-        <h2 class="text-center">체력 측정 검사표</h2>
-        <form id="health-form">
-            <ol>
-                <li>
-                    <div class="form-group">
-                        <label for="name">이름:</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력하세요" required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="age">나이:</label>
-                        <input type="number" class="form-control" id="age" name="age" placeholder="나이를 입력하세요" required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="gender">성별:</label>
-                        <select class="form-control" id="gender" name="gender" required>
-                            <option value="">성별을 선택하세요</option>
-                            <option value="남성">남성</option>
-                            <option value="여성">여성</option>
-                        </select>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="weight">몸무게 (kg):</label>
-                        <input type="number" class="form-control" id="weight" name="weight" placeholder="몸무게를 입력하세요"
-                               required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="height">키 (cm):</label>
-                        <input type="number" class="form-control" id="height" name="height" placeholder="키를 입력하세요"
-                               required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="bodyFatPercentage">체지방률:</label>
-                        <input type="number" class="form-control" id="bodyFatPercentage" name="bodyFatPercentage"
-                               placeholder="체지방률 입력하세요" required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="bmi">BMI:</label>
-                        <input type="number" class="form-control" id="bmi" name="bmi" placeholder="bmi를 입력하세요" required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="situps">앉아 윗몸 말아 올리기 (회):</label>
-                        <input type="number" class="form-control" id="situps" name="situps" placeholder="횟수를 입력하세요"
-                               required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="cross-situps">교차 윗몸일으키기 (회):</label>
-                        <input type="number" class="form-control" id="cross-situps" name="crossSitups"
-                               placeholder="횟수를 입력하세요" required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="shuttle-run">왕복 오래 달리기 (회):</label>
-                        <input type="number" class="form-control" id="shuttle-run" name="shuttleRun"
-                               placeholder="횟수를 입력하세요" required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="10m-run">10m 4회 왕복 오래 달리기 (초):</label>
-                        <input type="number" class="form-control" id="10m-run" name="tenMeterRun"
-                               placeholder="시간을 입력하세요" required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="jump">제자리 멀리 뛰기 (cm):</label>
-                        <input type="number" class="form-control" id="jump" name="jump" placeholder="거리(cm)를 입력하세요"
-                               required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="sit-stand">앉았다 일어서기 (회):</label>
-                        <input type="number" class="form-control" id="sit-stand" name="sitStand" placeholder="횟수를 입력하세요"
-                               required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="walking">2분간 제자리 걷기 (걸음):</label>
-                        <input type="number" class="form-control" id="walking" name="walking" placeholder="걸음 수를 입력하세요"
-                               required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="eight-walk">8자 보행 (초):</label>
-                        <input type="number" class="form-control" id="eight-walk" name="eightWalk"
-                               placeholder="시간을 입력하세요" required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="treadmill">트레드밀 (9분, km):</label>
-                        <input type="number" class="form-control" id="treadmill" name="treadmill"
-                               placeholder="거리(km)를 입력하세요" required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="reaction">반응 시간 (ms):</label>
-                        <input type="number" class="form-control" id="reaction" name="reaction"
-                               placeholder="시간(ms)를 입력하세요" required>
-                    </div>
-                </li>
-                <li>
-                    <div class="form-group">
-                        <label for="grip">악력 (kg):</label>
-                        <input type="number" class="form-control" id="grip" name="grip" placeholder="힘(kg)를 입력하세요"
-                               required>
-                    </div>
-                </li>
-            </ol>
+                // 폼 데이터 수집
+                const formData = {
+                    name: $('#name').val(),
+                    age: parseInt($('#age').val()),
+                    sex: $('#gender').val(),
+                    height: parseFloat($('#height').val()),
+                    weight: parseFloat($('#weight').val()),
+                    bodyFatPercentage: parseFloat($('#bodyFatPercentage').val()),
+                    sitUpCount: parseFloat($('#situps').val()),
+                    bmiKgPerM2: parseFloat($('#bmi').val()),
+                    crossedSitUpCount: parseFloat($('#cross-situps').val()),
+                    shuttleRunCount: parseFloat($('#shuttle-run').val()),
+                    tenMx4ShuttleRunSeconds: parseFloat($('#10m-run').val()),
+                    standingLongJumpCm: parseFloat($('#jump').val()),
+                    sitToStandCount: parseFloat($('#sit-stand').val()),
+                    twoMinuteSteppingInPlaceCount: parseFloat($('#walking').val()),
+                    treadmill9MinutesBpm: parseFloat($('#treadmill').val()),
+                    eightWalk: parseFloat($('#eight-walk').val()),
+                    reaction: parseFloat($('#reaction').val()),
+                    grip: parseFloat($('#grip').val())
+                };
 
-            <div class="text-center">
-                <button type="button" id="submit" class="btn btn-primary btn-lg">결과 보러가기</button>
-            </div>
-        </form>
-    </div>
-</div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById('submit').addEventListener('click', function (event) {
-            // 폼 기본 동작 차단
-            event.preventDefault();
+                // 입력값 유효성 검사
+                let isValid = true;
+                Object.keys(formData).forEach(function (key) {
+                    const value = formData[key];
 
-            // 폼 데이터 수집
-            const formData = {
-                name: document.getElementById('name').value,
-                age: parseInt(document.getElementById('age').value),
-                sex: document.getElementById('gender').value,
-                height: parseFloat(document.getElementById('height').value),
-                weight: parseFloat(document.getElementById('weight').value),
-                bodyFatPercentage: parseFloat(document.getElementById('bodyFatPercentage').value),
-                sitUpCount: parseFloat(document.getElementById('situps').value),
-                bmiKgPerM2: parseFloat(document.getElementById('bmi').value),
-                crossedSitUpCount: parseFloat(document.getElementById('cross-situps').value),
-                shuttleRunCount: parseFloat(document.getElementById('shuttle-run').value),
-                tenMx4ShuttleRunSeconds: parseFloat(document.getElementById('10m-run').value),
-                standingLongJumpCm: parseFloat(document.getElementById('jump').value),
-                sitToStandCount: parseFloat(document.getElementById('sit-stand').value),
-                twoMinuteSteppingInPlaceCount: parseFloat(document.getElementById('walking').value),
-                treadmill9MinutesBpm: parseFloat(document.getElementById('treadmill').value),
-                eightWalk: parseFloat(document.getElementById('eight-walk').value),
-                reaction: parseFloat(document.getElementById('reaction').value),
-                grip: parseFloat(document.getElementById('grip').value)
-            };
-
-            // 입력값 유효성 검사
-            let isValid = true;
-            for (const key in formData) {
-                const value = formData[key];
-
-                // 필수 값이 비어있는 경우 확인
-                if (value === undefined || value === null || value === '' || isNaN(value)) {
-                    alert(`${key} 항목을 올바르게 입력해주세요.`);
-                    isValid = false;
-                    break;
-                }
-
-                // 숫자 값이 0 이하인지 확인
-                if (typeof value === 'number' && value <= 0) {
-                    alert(`${key} 항목에 양수를 입력해주세요.`);
-                    isValid = false;
-                    break;
-                }
-            }
-
-            if (!isValid) return;
-
-            // Fetch API 요청
-            fetch('/api/v1/tests/my', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        return response.json().then(error => {
-                            throw new Error(error.message || '요청 처리 중 오류가 발생했습니다.');
-                        });
+                    // 필수 입력값 확인
+                    if (value === undefined || value === null || value === '') {
+                        alert(`${key} 항목을 입력해주세요.`);
+                        isValid = false;
+                        return false; // 유효성 검사가 실패하면 중단
                     }
-                    return response.json();
-                })
-                .then(data => {
-                    // 성공적으로 처리되었을 경우 결과 페이지로 이동
-                    window.location.href = `/result?id=${data.base64}`;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert(error.message || '요청 중 알 수 없는 오류가 발생했습니다.');
+
+                    // 숫자 필드에 숫자가 아닌 값이 입력되었는지 확인
+                    if (!isNaN(value) && typeof value === 'number' && value <= 0) {
+                        alert(`${key} 항목에 올바른 값을 입력해주세요.`);
+                        isValid = false;
+                        return false;
+                    }
                 });
+
+                if (isValid) {
+                    // AJAX 요청
+                    $.ajax({
+                        type: 'POST',
+                        url: '/api/v1/tests/my',
+                        data: JSON.stringify(formData),
+                        contentType: 'application/json',
+                        success: function (data) {
+                            // 결과 페이지로 이동
+                            window.location.href = `/result?id=${data.base64}`;
+                        },
+                        error: function (error) {
+                            console.error('Error:', error);
+                            alert('요청 중 오류가 발생했습니다.');
+                        }
+                    });
+                }
+            });
         });
-    });
-</script>
+
+    </script>
 </body>
 </html>
