@@ -9,7 +9,13 @@ class WebConfig : WebMvcConfigurer {
     override fun addCorsMappings(registry: CorsRegistry) {
         registry
             .addMapping("/api/v1/**") // CORS를 허용할 URL 패턴
-            .allowedOrigins("http://localhost:8080") // 허용할 도메인
+            .allowedOrigins(
+                "https://myhealthcheck.xyz",
+                "https://www.myhealthcheck.xyz",
+                "http://myhealthcheck.xyz",
+                "http://www.myhealthcheck.xyz",
+                "http://localhost:3000",
+            ) // 허용할 도메인
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // 허용할 HTTP 메서드
             .allowedHeaders("*") // 허용할 헤더
             .allowCredentials(true) // 쿠키 전송 허용 여부
