@@ -18,9 +18,9 @@ class CorsConfig {
                         "https://www.myhealthcheck.xyz",
                         "http://myhealthcheck.xyz",
                         "http://www.myhealthcheck.xyz",
-                    ).allowedMethods("GET", "POST")
+                    ).allowedMethods("GET", "POST", "OPTIONS", "PUT", "DELETE")
                     .allowedHeaders("*")
-                    .allowCredentials(true)
+                    .allowCredentials(true) // allowCredentials는 특정 Origin과 함께 사용
             }
         }
 }
