@@ -4,19 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30c254e9-fe6c-4241-bab6-bc3195100d5f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ktlint-plugin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/org/prize/healthapp/application/service/MyTestResultResponseDto.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/result.html" afterDir="false" />
+    <list default="true" id="30c254e9-fe6c-4241-bab6-bc3195100d5f" name="Changes" comment="refactor : CORS 오류">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/prize/healthapp/adapter/in/view/ControllerGroup.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/prize/healthapp/adapter/in/view/ControllerGroup.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/prize/healthapp/application/service/MyTestResultReponseDto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/prize/healthapp/application/service/MyTestResultReponseDto.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/org/prize/healthapp/application/service/TestResultService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/org/prize/healthapp/application/service/TestResultService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-docker.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-docker.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,16 +50,7 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="healthapp" type="f1a62948:ProjectNode" />
                 <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.flywaydb:flyway-mysql:10.10.0" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="healthapp" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-                <item name="compileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
-                <item name="org.flywaydb:flyway-mysql:10.10.0" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
-                <item name="org.flywaydb:flyway-core:10.10.0" type="b3323d55:ExternalSystemViewDefaultContributor$DependencyExternalSystemNode" />
+                <item name="testCompileClasspath" type="62daadca:ExternalSystemViewDefaultContributor$DependencyScopeExternalSystemNode" />
               </path>
             </expand>
             <select />
@@ -84,6 +64,7 @@
       <list>
         <option value="Python Script" />
         <option value="Kotlin Interface" />
+        <option value="Class" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -118,52 +99,53 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Docker.compose.prod.yaml.nginx: Compose Deployment.executor": "Run",
-    "Docker.compose.prod.yaml: Compose Deployment.executor": "Run",
-    "Docker.compose.yaml.mysql: Compose Deployment.executor": "Run",
-    "Docker.compose.yaml: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.prod.yaml.nginx: Compose Deployment.executor": "Run",
-    "Gradle.Build HealthWebApp.executor": "Run",
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.HealthWebApp [build].executor": "Run",
-    "Gradle.HealthWebApp [clean].executor": "Run",
-    "Gradle.HealthWebApp [jar].executor": "Run",
-    "Gradle.HealthWebApp [testClasses].executor": "Run",
-    "JavaScript Debug.index.html.executor": "Run",
-    "JavaScript Debug.test.html.executor": "Run",
-    "JavaScript Debug.user.html.executor": "Run",
-    "JavaScript Debug.videos.html.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.HealthappApplication.executor": "Run",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/jeeewan/GitHub/HealthWebApp/src/main/resources/templates",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15917969",
-    "project.structure.side.proportion": "0.4604651",
-    "settings.editor.selected.configurable": "preferences.ktlint-plugin",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.compose.prod.yaml.nginx: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.compose.prod.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.compose.yaml.mysql: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.prod.yaml.nginx: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build HealthWebApp.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HealthWebApp [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HealthWebApp [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HealthWebApp [jar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HealthWebApp [testClasses].executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.result.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.test.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.user.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.videos.html.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.HealthappApplication.executor&quot;: &quot;Run&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jeeewan/GitHub/HealthWebApp/src/main/resources/templates&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15917969&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4604651&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.ktlint-plugin&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "kotlin-gradle-user-dirs": [
-      "/Users/jeeewan/.gradle"
+    &quot;kotlin-gradle-user-dirs&quot;: [
+      &quot;/Users/jeeewan/.gradle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/templates" />
@@ -189,7 +171,7 @@
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/healthapp/src/main/resources/static/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="test.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/healthapp/src/main/resources/templates/test.html" useBuiltInWebServerPort="true">
+    <configuration name="result.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/healthapp/src/main/resources/templates/result.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="user.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/healthapp/src/main/resources/templates/user.html" useBuiltInWebServerPort="true">
@@ -318,10 +300,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.HealthappApplication" />
+        <item itemvalue="JavaScript Debug.result.html" />
         <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.videos.html" />
         <item itemvalue="JavaScript Debug.user.html" />
-        <item itemvalue="JavaScript Debug.test.html" />
       </list>
     </recent_temporary>
   </component>
@@ -369,102 +351,13 @@
       <workItem from="1731658799323" duration="162000" />
       <workItem from="1731708622699" duration="10054000" />
       <workItem from="1731721508442" duration="651000" />
-    </task>
-    <task id="LOCAL-00033" summary="feat : prod secret yaml 추가">
-      <option name="closed" value="true" />
-      <created>1730959694121</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1730959694121</updated>
-    </task>
-    <task id="LOCAL-00034" summary="feat : nginx conf 경로 변경">
-      <option name="closed" value="true" />
-      <created>1730960259876</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1730960259876</updated>
-    </task>
-    <task id="LOCAL-00035" summary="feat : prod 위한 설정">
-      <option name="closed" value="true" />
-      <created>1730991935182</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1730991935182</updated>
-    </task>
-    <task id="LOCAL-00036" summary="feat : prod 위한 설정">
-      <option name="closed" value="true" />
-      <created>1731027501429</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1731027501429</updated>
-    </task>
-    <task id="LOCAL-00037" summary="feat : prod 위한 설정">
-      <option name="closed" value="true" />
-      <created>1731028088406</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1731028088406</updated>
-    </task>
-    <task id="LOCAL-00038" summary="feat : prod 위한 설정">
-      <option name="closed" value="true" />
-      <created>1731028105511</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1731028105511</updated>
-    </task>
-    <task id="LOCAL-00039" summary="feat : prod 위한 설정">
-      <option name="closed" value="true" />
-      <created>1731032787854</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1731032787854</updated>
-    </task>
-    <task id="LOCAL-00040" summary="feat : prod 위한 설정">
-      <option name="closed" value="true" />
-      <created>1731033281574</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1731033281574</updated>
-    </task>
-    <task id="LOCAL-00041" summary="feat : prod 위한 설정">
-      <option name="closed" value="true" />
-      <created>1731034395769</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1731034395769</updated>
-    </task>
-    <task id="LOCAL-00042" summary="feat : prod 위한 설정">
-      <option name="closed" value="true" />
-      <created>1731038634679</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1731038634679</updated>
-    </task>
-    <task id="LOCAL-00043" summary="feat : swagger 반영을 위한 설정">
-      <option name="closed" value="true" />
-      <created>1731278206328</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1731278206328</updated>
-    </task>
-    <task id="LOCAL-00044" summary="feat : 도커 설정 자동화">
-      <option name="closed" value="true" />
-      <created>1731278540176</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1731278540176</updated>
+      <workItem from="1731991046194" duration="2987000" />
+      <workItem from="1732063406934" duration="599000" />
+      <workItem from="1732070972097" duration="154000" />
+      <workItem from="1732363274977" duration="2258000" />
+      <workItem from="1732525159614" duration="10000" />
+      <workItem from="1734719995687" duration="9338000" />
+      <workItem from="1734787046210" duration="6000" />
     </task>
     <task id="LOCAL-00045" summary="feat : typo 수정">
       <option name="closed" value="true" />
@@ -762,7 +655,103 @@
       <option name="project" value="LOCAL" />
       <updated>1731731657490</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="feat: 의존성 추가 webflux, coroutine, objectMapper">
+      <option name="closed" value="true" />
+      <created>1731893119398</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1731893119399</updated>
+    </task>
+    <task id="LOCAL-00083" summary="refactor: front 수정">
+      <option name="closed" value="true" />
+      <created>1731893132372</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1731893132372</updated>
+    </task>
+    <task id="LOCAL-00084" summary="refactor: docker - logging 추가">
+      <option name="closed" value="true" />
+      <created>1731893166655</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1731893166656</updated>
+    </task>
+    <task id="LOCAL-00085" summary="feat: api_key 추가">
+      <option name="closed" value="true" />
+      <created>1731893181048</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1731893181048</updated>
+    </task>
+    <task id="LOCAL-00086" summary="feat: stadium 관련 로직 생성">
+      <option name="closed" value="true" />
+      <created>1731893225576</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1731893225576</updated>
+    </task>
+    <task id="LOCAL-00087" summary="feat: stadium 조회 에러 해결 및 result, test 프론트 완성">
+      <option name="closed" value="true" />
+      <created>1731994591483</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1731994591483</updated>
+    </task>
+    <task id="LOCAL-00088" summary="feat: 남성&amp;여성 AJAX 요청되게 수정 및 CORS 설정">
+      <option name="closed" value="true" />
+      <created>1732064000852</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1732064000852</updated>
+    </task>
+    <task id="LOCAL-00089" summary="refactor : ktlint 적용 및 transactional 적용">
+      <option name="closed" value="true" />
+      <created>1732071059743</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1732071059743</updated>
+    </task>
+    <task id="LOCAL-00090" summary="refactor : CORS 오류">
+      <option name="closed" value="true" />
+      <created>1732363457473</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1732363457474</updated>
+    </task>
+    <task id="LOCAL-00091" summary="refactor : CORS 오류">
+      <option name="closed" value="true" />
+      <created>1732364054203</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1732364054203</updated>
+    </task>
+    <task id="LOCAL-00092" summary="refactor : CORS 오류">
+      <option name="closed" value="true" />
+      <created>1732364403990</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1732364403990</updated>
+    </task>
+    <task id="LOCAL-00093" summary="refactor : CORS 오류">
+      <option name="closed" value="true" />
+      <created>1732364802711</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1732364802711</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -792,15 +781,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat : 배포 자동화를 위한 설정" />
-    <MESSAGE value="feat : front 세팅" />
-    <MESSAGE value="feat : ddl auto update로 변경" />
-    <MESSAGE value="feat : 카테고리명 변경으로 필드명 변경" />
-    <MESSAGE value="feat : 이미지 추가" />
-    <MESSAGE value="feat : swagger tag 추가" />
-    <MESSAGE value="refactor : 필드명 변경" />
-    <MESSAGE value="feat: logging 기능 추가" />
-    <MESSAGE value="feat: thymeleaf 추가 (경로 탐색 문제 해결)" />
     <MESSAGE value="feat: thymeleaf 추가로 경로 탐색 해결" />
     <MESSAGE value="feat: 경로 탐색 문제로 인한 이동" />
     <MESSAGE value="feat: template 폴더에도 assets 추가" />
@@ -817,7 +797,16 @@
     <MESSAGE value="feat: prod와 환경 맞추기 위해 설정" />
     <MESSAGE value="feat: 마이그레이션 코드 작성" />
     <MESSAGE value="feat: MyTest 를 위한 변경 및 세팅" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: MyTest 를 위한 변경 및 세팅" />
+    <MESSAGE value="feat: 의존성 추가 webflux, coroutine, objectMapper" />
+    <MESSAGE value="refactor: front 수정" />
+    <MESSAGE value="refactor: docker - logging 추가" />
+    <MESSAGE value="feat: api_key 추가" />
+    <MESSAGE value="feat: stadium 관련 로직 생성" />
+    <MESSAGE value="feat: stadium 조회 에러 해결 및 result, test 프론트 완성" />
+    <MESSAGE value="feat: 남성&amp;여성 AJAX 요청되게 수정 및 CORS 설정" />
+    <MESSAGE value="refactor : ktlint 적용 및 transactional 적용" />
+    <MESSAGE value="refactor : CORS 오류" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor : CORS 오류" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
