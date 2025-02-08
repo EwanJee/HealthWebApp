@@ -9,7 +9,7 @@
 - ![Screenshot 2024-11-16 at 10 40 12 PM](https://github.com/user-attachments/assets/ecd8ccac-fa14-424e-9f24-9bc2a37a5b28)
 
 ## 기술 스택
-- Backend: spring boot 3.3.5, Kotlin, JPA, Webflux, coroutines, Flyway, Junit5, Mockito, Testcontainers, Spring Security, Spring Data JPA, Spring Data Redis, Spring Data Elasticsearch, Spring Data MongoDB, Spring Data JDBC, Spring Data R2DBC, Spring Data Cassandra, Spring Data Neo4j, Spring Data Solr, Spring Data Couchbase, Spring Data DynamoDB, Spring Data Gemfire, Spring Data Hazelcast, Spring Data InfluxDB, Spring Data LDAP, Spring Data Redis 
+- Backend: spring boot 3.3.5, Kotlin, JPA, Webflux, coroutines, Flyway, Junit5, Mockito, Spring Data JPA, Spring Data Redis 
 - Infra: RDB MySQL, AWS S3, Route 53, Docker, Amazon Linux, Nginx (Reverse Proxy), Github Actions
 - Docs: Swagger
 - Frontend: AJAX
@@ -19,6 +19,4 @@
 - https://drive.google.com/file/d/1GFIXtv8Z05hkQNJ6efbUrliyFs1-heTk/view?usp=sharing
 
 ## 사용된 API
-- (POST) /api/v1/persons
-- (사진)
-- 설명
+- https://myhealthcheck.xyz/swagger-ui/index.html
